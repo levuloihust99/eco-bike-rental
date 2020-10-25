@@ -15,8 +15,6 @@ Complete SRS document.
 ## Revisions
 All members reviewed each other's work.
 
----
-
 # LAB 02 - ARCHITECTURAL DESIGN
 ## Tasks
 - Determine analysis classes.
