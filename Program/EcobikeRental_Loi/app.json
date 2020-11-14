@@ -1,0 +1,12 @@
+{
+  "name": "EcobikeRental",
+  "displayName": "EcobikeRental",
+  "expo": {
+    "name": "EcobikeRental",
+    "slug": "EcobikeRental",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
