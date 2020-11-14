@@ -65,4 +65,8 @@ web-build/
 
 # Project specific
 /package.json
-yarn.lock
+/yarn.lock
+/node_modules/
+/ios
+/android
+/.buckconfig
