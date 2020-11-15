@@ -1,27 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import HeaderCompo from './header';
+import React, {useEffect} from 'react';
+import HomeScreen from './HomeScreen';
+import PrepayScreen from './PrepayScreen';
+import RentDetail from './RentDetail';
+import RentingDetailScreen from './RentingDetailScreen';
 export default class App extends React.Component  {
-  state = {
-    myState : 'abcdedkmvkmvkdmksjjdnjdcmvddssdf'
-  }
-  updateState = () => {
-    this.setState({ myState : 'Updated'})
-  }
   render(){
     return (
-      <View style = {styles.container}>
-        <HeaderCompo myState = {this.state.myState} updateState = {this.updateState}/>
-      </View>
-    );
+      // Màn hình chính
+        // <HomeScreen></HomeScreen>
+      // Thông tin thuê xe
+        // <RentDetail></RentDetail>
+      // Thanh toán cọc
+        // <PrepayScreen></PrepayScreen>
+      // Thông tin xe đang được thuê
+      <RentingDetailScreen></RentingDetailScreen>
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width : '100%',
-    height : '12%',
-    backgroundColor: '#08BD5F',
-    // flex :1 
-  },
-});

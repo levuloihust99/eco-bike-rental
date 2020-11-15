@@ -1,19 +1,20 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View , Image} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons } from '@expo/vector-icons'
 
 const HeaderCompo = (props) => {
   return (
+    // <Image source={require('./image/icon.png')} />
     <View style= {styles.container}>
         <View style = {styles.iconStyle}>
-           <MaterialIcons name="menu" size={40} color="black"  />
+           <MaterialIcons name="menu" size={40} color='#BDBDBD'  />
         </View>
         <View style = {styles.iconAvatar}>
-           {/* <MaterialIcons name="menu" size={32} color="black"  /> */}
+          
         </View>
         <View></View>
         <View style = {styles.iconStyle}>
-            <EvilIcons name="search" size={40} color="black" />
+            <EvilIcons name="search" size={40} color='#BDBDBD' />
         </View>
     </View>
     
@@ -28,7 +29,8 @@ const HeaderCompo = (props) => {
 }
 const styles = {
   container : {
-    flex : 1 ,
+    backgroundColor: '#FFFFFF',
+    // flex : 1 ,
     flexDirection : 'row'
   },
   bgHeader: {
@@ -51,7 +53,6 @@ const styles = {
     fontSize: 10,
     height: '100%',
     width : '30%',
-  
   },
   iconAvatar : {
     marginTop: 30,
