@@ -62,11 +62,3 @@ buck-out/
 # Expo
 .expo/*
 web-build/
-
-# Project specific
-/package.json
-/yarn.lock
-/node_modules/
-/ios
-/android
-/.buckconfig
