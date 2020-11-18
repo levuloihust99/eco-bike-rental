@@ -10,12 +10,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 export default class App extends React.Component  {
-  state = {
-    myState : 'abcdedkmvkmvkdmksjjdnjdcmvddssdf'
-  }
-  updateState = () => {
-    this.setState({ myState : 'Updated'})
-  }
   render(){
     return (
         <NavigationContainer>
@@ -43,12 +37,3 @@ export default class App extends React.Component  {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    width : '100%',
-    height : '12%',
-    backgroundColor: '#08BD5F',
-    // flex :1 
-  },
-});
