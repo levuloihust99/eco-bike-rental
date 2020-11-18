@@ -4,6 +4,9 @@ import HeaderCompo from './Header';
 import PackingLotElement from './PackingLotElement';
 
 export default class HomeScreen extends React.Component {
+  constructor(props){
+    super(props);
+  }
     prop = [{
             id : 1,
             name : 'Vườn Hướng Dươnggggggggg',
@@ -41,7 +44,7 @@ export default class HomeScreen extends React.Component {
           return (
             <TouchableHighlight
                 style={styles.submit}
-                onPress={() => this}
+                onPress={() => this.props.navigation.navigate('RentDetail')}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Thuê xe</Text>
             </TouchableHighlight>

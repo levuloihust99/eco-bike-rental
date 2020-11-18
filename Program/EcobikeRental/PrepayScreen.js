@@ -3,12 +3,12 @@ import { Text, View , Image, Button, TouchableHighlight} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
 import HeaderCompo from './Header';
 
-elemtJson = {
-   'Tên chủ thẻ' : 'Phạm Minh Khiêm',
-   'Số tài khoản' : '135 234 2324' ,
-   'Số tiền' : '350.000 VND'
-}
 const PrepayScreen = (props) => {
+  elemtJson = {
+    'Tên chủ thẻ' : 'Phạm Minh Khiêm',
+    'Số tài khoản' : '135 234 2324' ,
+    'Số tiền' : '350.000 VND'
+ }
   return (
     <View style= {styles.container}>
         <HeaderCompo style= {styles.header}/>

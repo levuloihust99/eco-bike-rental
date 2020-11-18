@@ -34,7 +34,7 @@ const RentDetail = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => this}
+                onPress={() => props.navigation.navigate('PrepayScreen')}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Tiếp tục</Text>
             </TouchableHighlight>

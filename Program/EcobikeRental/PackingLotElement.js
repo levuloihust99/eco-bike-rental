@@ -78,7 +78,8 @@ const styles = {
   },
   textBox :{
     height : '30%',
-    width  : '100%'
+    width  : '100%',
+    overflow: 'hidden',
   }
 
 };
