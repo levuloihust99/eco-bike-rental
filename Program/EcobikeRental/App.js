@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import HomeScreen from './HomeScreen';
 import PrepayScreen from './PrepayScreen';
 import RentDetail from './RentDetail';
+import RentBikeScreen from './RentBikeScreen';
 import RentingDetailScreen from './RentingDetailScreen';
 import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -20,6 +21,7 @@ export default class App extends React.Component  {
             >
                 <Stack.Screen name='Home' component={HomeScreen} 
                 />
+                <Stack.Screen name='RentBike' component={RentBikeScreen}/>
                 <Stack.Screen name='PrepayScreen' component={PrepayScreen} 
                 />
                 <Stack.Screen name='RentDetail' component={RentDetail} />

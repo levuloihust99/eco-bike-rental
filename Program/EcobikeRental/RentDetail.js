@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View , Image, Button, TouchableHighlight} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
 import HeaderCompo from './Header';
+import SubHeader from './SubHeader';
 
 element_text = [
   'Loại xe',
@@ -21,7 +22,8 @@ elemtJson = {
 const RentDetail = (props) => {
   return (
     <View style= {styles.container}>
-        <HeaderCompo style= {styles.header}/>
+        {/* <HeaderCompo style= {styles.header}/> */}
+        <SubHeader title="Thông tin thuê"/>
         <View style = {styles.textwap}>
             {
               Object.keys(elemtJson).map((key,vlue) => {

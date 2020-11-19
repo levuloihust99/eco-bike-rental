@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View , Image, Button, TouchableHighlight} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
-import HeaderCompo from './Header';
+import SubHeader from './SubHeader';
 
 const PrepayScreen = (props) => {
   elemtJson = {
@@ -11,7 +11,8 @@ const PrepayScreen = (props) => {
  }
   return (
     <View style= {styles.container}>
-        <HeaderCompo style= {styles.header}/>
+        {/* <HeaderCompo style= {styles.header}/> */}
+        <SubHeader title="Thanh toán cọc"/>
         <View style = {styles.textwap}>
           <View style = {styles.customMargin}>
             <Text style ={ {marginTop : -10, textAlign : 'center' ,color : '#636262'}}> Thông tin thanh toán</Text>
@@ -27,7 +28,9 @@ const PrepayScreen = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => this}
+                onPress={() => props.navigation.navigate('Home', {
+                  status: 'rented'
+                })}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Thanh toán</Text>
             </TouchableHighlight>
