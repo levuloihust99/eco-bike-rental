@@ -7,6 +7,11 @@ import RentingDetailScreen from './RentingDetailScreen';
 import { View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import ReturnDetail from './ReturnDetail';
+import PackingLotElement from './PackingLotElement';
+import ReturnPackingLotScreen from './ReturnPackingLotScreen';
+import ReturnBike from './ReturnBike';
+import InvoiceScreen from './InvoiceScreen';
 
 const Stack = createStackNavigator();
 
@@ -26,16 +31,12 @@ export default class App extends React.Component  {
                 />
                 <Stack.Screen name='RentDetail' component={RentDetail} />
                 <Stack.Screen name='RentingDetailScreen' component={RentingDetailScreen} />
+                <Stack.Screen name='ReturnBike' component={ReturnBike} />
+                <Stack.Screen name='ReturnDetail' component={ReturnDetail} />
+                <Stack.Screen name='ReturnPackingLotScreen' component={ReturnPackingLotScreen} />
+                <Stack.Screen name='InvoiceScreen' component={InvoiceScreen} />
             </Stack.Navigator>
         </NavigationContainer>
-      // Màn hình chính
-        // <HomeScreen></HomeScreen>
-      // Thông tin thuê xe
-        // <RentDetail></RentDetail>
-      // Thanh toán cọc
-        // <PrepayScreen></PrepayScreen>
-      // Thông tin xe đang được thuê
-    //   <RentingDetailScreen></RentingDetailScreen>
     )
   }
 }

@@ -11,6 +11,8 @@ elemtJson = {
 	'Mã vạch': "123542X35sjs"
 }
 const RentingDetailScreen = (props) => {
+	// unmount RentingDetailScreen when there is a bike being rented
+	// or Save the timer in Redux/parent component
 	const [timer, setTimer] = React.useState({
 		hour: 0,
 		minute: 0,
@@ -18,7 +20,7 @@ const RentingDetailScreen = (props) => {
 	});
 
 	React.useEffect(() => {
-		setTimeout(() => {
+		const timeoutID = setTimeout(() => {
 			let nextSecond = timer.second + 1;
 			let nextMinute = timer.minute;
 			let nextHour = timer.hour;
@@ -34,7 +36,7 @@ const RentingDetailScreen = (props) => {
 			setTimer({hour: nextHour, minute: nextMinute, second: nextSecond});
 		}, 1000);
 
-		return 
+		return () => clearTimeout(timeoutID);
 	});
 
 	return (
@@ -60,12 +62,14 @@ const RentingDetailScreen = (props) => {
             </Text>
 			</View>
 			<View style={styles.rowSeparate}>
-				<View style={{ width: '50%' }}>
-					<MaterialIcons style={{ marginLeft: '50%' }} name="pause-circle-outline" size={75} color='#08BD5F' />
+				<View style={{ width: '30%', alignItems: 'center' }}>
+					<MaterialIcons name="pause-circle-outline" size={75} color='#08BD5F' />
+					<Text>Tạm dừng</Text>
 				</View>
-				<View style={{ width: '50%' }}>
-					<MaterialCommunityIcons style={{ marginRight: '50%' }} name="skip-previous-circle-outline" size={75} color="#08BD5F" />
-
+				<View style={{ width: '30%', alignItems: 'center'}}>
+					<MaterialIcons name="keyboard-return" size={75} color="#08BD5F" 
+					onPress={() => props.navigation.navigate('ReturnPackingLotScreen')} />
+					<Text>Trả xe</Text>
 				</View>
 			</View>
 		</View>
@@ -86,7 +90,8 @@ const Element = (props) => {
 const styles = {
 	rowSeparate: {
 		flexDirection: 'row',
-		marginTop: '4%'
+		marginTop: '4%',
+		justifyContent: 'center'
 	},
 	keyValues: {
 		flex: 1,

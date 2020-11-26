@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View , Image, Button, TouchableHighlight} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
-import HeaderCompo from './Header';
+import SubHeader from "./SubHeader";
 
 const InvoiceScreen = (props) => {
     
@@ -17,7 +17,8 @@ const InvoiceScreen = (props) => {
     }
   return (
     <View style= {styles.container}>
-        <HeaderCompo style= {styles.header}/>
+        {/* <HeaderCompo style= {styles.header}/> */}
+        <SubHeader title="Chi tiết giao dịch"/>
         <View style = {styles.textHeader}>
                   <Text style= {{color : '#636262' , fontWeight : '200'}}>
                     Thanh toán thành công ! cảm ơn bạn đã sử dụng dịch vụ của chúng tôi
@@ -38,7 +39,7 @@ const InvoiceScreen = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => this}
+                onPress={() => props.navigation.navigate('Home')}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Quay về trang chủ</Text>
             </TouchableHighlight>

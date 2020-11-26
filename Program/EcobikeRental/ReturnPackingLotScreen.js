@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from 'react-native';
 import HeaderCompo from './Header';
+import SubHeader from './SubHeader';
 import PackingLotElement from './PackingLotElement';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 export default class ReturnPackingLotScreen extends React.Component {
     prop = [{
             id : 1,
@@ -32,7 +34,8 @@ export default class ReturnPackingLotScreen extends React.Component {
       render(){
         return (
             <View style = {styles.container}>
-              <HeaderCompo style= {styles.header}/>
+              {/* <HeaderCompo style= {styles.header}/> */}
+              <SubHeader title="Trả xe"/>
               <View style = {styles.textHeader}>
                   <Text>
                     Hãy chọn một điểm dừng gần bạn nhất để trả xe
@@ -55,6 +58,7 @@ export default class ReturnPackingLotScreen extends React.Component {
 
 }
 const ItemElement = (props) => {
+  const navigation = useNavigation();
   return (
     <View style= {styles.elementStyle}>
 
@@ -70,7 +74,7 @@ const ItemElement = (props) => {
         </View>
         <TouchableHighlight
             style={styles.submit}
-            onPress={() => this}
+            onPress={() => navigation.navigate('ReturnBike')}
             underlayColor='#FA2626'>
             <Text style={[styles.submitText]}>Chọn</Text>
         </TouchableHighlight>

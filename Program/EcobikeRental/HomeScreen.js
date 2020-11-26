@@ -36,7 +36,7 @@ export default class HomeScreen extends React.Component {
 			.catch((error) => {
 				console.error(error);
 			})
-			.finally((json) => {
+			.finally(() => {
 				this.setState({ isLoading: false });
 			});
 	}
@@ -99,11 +99,13 @@ export default class HomeScreen extends React.Component {
 						)
 					})}
 				</ScrollView>
+				{/* <Button title="Trả xe" onPress={this.props.navigation.navigate('ReturnDetail')}/>
+				<Button title="Chọn bãi trả xe" onPress={this.props.navigation.navigate('ReturnPackingLotScreen')}/>
+				<Button title="Danh sách bãi xe" onPress={this.props.navigation.navigate('PackingLotElement')} /> */}
 			</View>
 		);
 	}
 }
-
 
 const defaultData =
 	[
