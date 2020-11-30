@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, Button } from 'react-native';
 import HeaderCompo from './Header';
 import PackingLotElement from './PackingLotElement';
-
+import { baseURL } from './config'
+ 
 export default class HomeScreen extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,17 +16,13 @@ export default class HomeScreen extends React.Component {
 	}
 
 	UNSAFE_componentWillMount() {
-		fetch('https://99268e9cd5ff.ngrok.io/listParkingLot',
+		fetch(baseURL + 'listParkingLot',
 			{
-				method: 'POST',
+				method: 'GET',
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({
-					type: 'packing_lot',
-					number: 6
-				})
+				}
 			}
 		).then((response) => response.json())
 			.then((json) => {
@@ -86,6 +83,7 @@ export default class HomeScreen extends React.Component {
 		};
 	}
 	render() {
+		// console.log(this.state.data);
 		return (
 			<View style={styles.container}>
 				<HeaderCompo style={styles.header} />
@@ -99,9 +97,6 @@ export default class HomeScreen extends React.Component {
 						)
 					})}
 				</ScrollView>
-				{/* <Button title="Trả xe" onPress={this.props.navigation.navigate('ReturnDetail')}/>
-				<Button title="Chọn bãi trả xe" onPress={this.props.navigation.navigate('ReturnPackingLotScreen')}/>
-				<Button title="Danh sách bãi xe" onPress={this.props.navigation.navigate('PackingLotElement')} /> */}
 			</View>
 		);
 	}

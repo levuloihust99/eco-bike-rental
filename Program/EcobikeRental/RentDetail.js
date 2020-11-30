@@ -4,31 +4,29 @@ import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons
 import HeaderCompo from './Header';
 import SubHeader from './SubHeader';
 
-element_text = [
-  'Loại xe',
-  'Giá thuê',
-  'Thời gian đi tối đa',
-  'Mã vạch',
-  'Sử dụng lần cuối',
-]
-elemtJson = {
-   'Loại xe' : 'Yamaha icat 44444',
-   'Giá thuê' : '150.000 VND' ,
-   'Thời gian đi tối đa' : '1h20m',
-    'Mã vạch' : '10293948502',
-    'Sử dụng cuối' : '21/10/2020',
-    'Giá cọc' : '150.000 VND'
+var rentDetailElemtJson = {
+  'Loại xe' : 'Yamaha icat 44444',
+  'Giá thuê' : '150.000 VND' ,
+  'Thời gian đi tối đa' : '1h20m',
+   'Mã vạch' : '10293948502',
+   'Sử dụng cuối' : '21/10/2020',
+   'Giá cọc' : '150.000 VND'
 }
+
 const RentDetail = (props) => {
+  const data = props.route.params?.respStatus ? props.route.params.respStatus : rentDetailElemtJson
+  console.log("I'm in RentDetail")
+  console.log(data)
   return (
     <View style= {styles.container}>
         {/* <HeaderCompo style= {styles.header}/> */}
         <SubHeader title="Thông tin thuê"/>
         <View style = {styles.textwap}>
+          {/* {console.log(data)} */}
             {
-              Object.keys(elemtJson).map((key,vlue) => {
+              Object.keys(data).map((key,vlue) => {
                 return (
-                  <Element key = {key} name = {key} detail = {elemtJson[key]}></Element>
+                  <Element key = {key} name = {key} detail = {data[key]}></Element>
                 )
                 })
             }
@@ -36,7 +34,7 @@ const RentDetail = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => props.navigation.navigate('PrepayScreen')}
+                onPress={() => props.navigation.navigate('PaymentInfo')}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Tiếp tục</Text>
             </TouchableHighlight>

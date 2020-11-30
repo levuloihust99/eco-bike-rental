@@ -5,7 +5,7 @@ import SubHeader from "./SubHeader";
 
 const InvoiceScreen = (props) => {
     
-    elemtJson = {
+    invoiceElemtJson = {
         'Loại xe' : 'Yamaha icat v4',
         'Mã vạch' : '135 234 2324' ,
         'Thời điểm thuê' : '1 giờ 30 phút',
@@ -29,9 +29,9 @@ const InvoiceScreen = (props) => {
             <Text style ={ {marginTop : -10, fontWeight:'200', textAlign : 'center' ,color : '#636262'}}>Chi tiết giao dịch</Text>
           </View>
             {
-              Object.keys(elemtJson).map((key,vlue) => {
+              Object.keys(invoiceElemtJson).map((key,vlue) => {
                 return (
-                  <Element key = {key} name = {key} detail = {elemtJson[key]}></Element>
+                  <Element key = {key} name = {key} detail = {invoiceElemtJson[key]}></Element>
                 )
                 })
             }
@@ -39,7 +39,7 @@ const InvoiceScreen = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => props.navigation.navigate('Home')}
+                onPress={() => props.navigation.navigate('Home', {status: 'renting'})}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Quay về trang chủ</Text>
             </TouchableHighlight>

@@ -6,7 +6,7 @@ import SubHeader from './SubHeader';
 
 const ReturnDetail = (props) => {
     
-    elemtJson = {
+    var returnDetailElemtJson = {
         'Loại xe' : 'Yamaha icat v4',
         'Mã vạch' : '135 234 2324' ,
         'Thời gian thuê' : '1 giờ 30 phút',
@@ -23,18 +23,18 @@ const ReturnDetail = (props) => {
             <Text style ={ {marginTop : -10, textAlign : 'center' ,color : '#636262'}}> Thông tin trả xe</Text>
           </View>
             {
-              Object.keys(elemtJson).map((key,vlue) => {
+              Object.keys(returnDetailElemtJson).map((key,vlue) => {
                   if (key === 'Số tiền nhận lại sau sau trả xe'){
                     return (
                         <View>
                             <Text style= {styles.customHeadText} key = {key}>{key}</Text>
-                            <Text style= {styles.customDetailText} key = {vlue}> {elemtJson[key]}</Text>
+                            <Text style= {styles.customDetailText} key = {returnDetailElemtJson[key]}> {returnDetailElemtJson[key]}</Text>
                         </View>
                     
                     )
                   } else
                 return (
-                  <Element key = {key} name = {key} detail = {elemtJson[key]}></Element>
+                  <Element key = {key} name = {key} detail = {returnDetailElemtJson[key]}></Element>
                 )
                 })
             }

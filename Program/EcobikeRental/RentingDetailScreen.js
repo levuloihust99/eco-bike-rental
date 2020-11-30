@@ -4,15 +4,17 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SubHeader from './SubHeader';
 
-elemtJson = {
-	'Loại xe': 'Yamaha Icat4',
-	'Số tiền tạm tính': '150.000VND',
-	'Lượng pin còn lại': '30%',
-	'Mã vạch': "123542X35sjs"
-}
 const RentingDetailScreen = (props) => {
 	// unmount RentingDetailScreen when there is a bike being rented
 	// or Save the timer in Redux/parent component
+	const refContainer = useRef('head');
+	var rentingElemtJson = {
+		'Loại xe': 'Yamaha Icat4',
+		'Số tiền tạm tính': '150.000VND',
+		'Lượng pin còn lại': '30%',
+		'Mã vạch': "123542X35sjs"
+	}
+
 	const [timer, setTimer] = React.useState({
 		hour: 0,
 		minute: 0,
@@ -46,9 +48,9 @@ const RentingDetailScreen = (props) => {
 				<View style={styles.customMargin}>
 				</View>
 				{
-					Object.keys(elemtJson).map((key, vlue) => {
+					Object.keys(rentingElemtJson).map((key, vlue) => {
 						return (
-							<Element key={key} name={key} detail={elemtJson[key]}></Element>
+							<Element key={key} name={key} detail={rentingElemtJson[key]}></Element>
 						)
 					})
 				}

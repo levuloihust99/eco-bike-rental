@@ -1,14 +1,58 @@
 import React from 'react';
-import { Text, View , Image, Button, TouchableHighlight} from 'react-native';
+import { Text, View , Image, Button, TouchableHighlight, Alert} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
 import SubHeader from './SubHeader';
+import { baseURL } from './config';
+
+const defaultJson = {
+  'Tên chủ thẻ' : 'Phạm Minh Khiêm',
+  'Số tài khoản' : '135 234 2324' ,
+  'Số tiền' : '350.000 VND'
+}
+
+var confirmStatus = {}
 
 const PrepayScreen = (props) => {
-  elemtJson = {
-    'Tên chủ thẻ' : 'Phạm Minh Khiêm',
-    'Số tài khoản' : '135 234 2324' ,
-    'Số tiền' : '350.000 VND'
- }
+  var prepayElemtJson = props.route.params?.data ? props.route.params.data : defaultJson
+
+  const processTransaction = () => {
+    fetch(baseURL + "confirmPay", {
+      method: 'POST',
+      headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          userID: '1',
+          bikeID: '1',
+          cardID: prepayElemtJson.cardID,
+          userName: prepayElemtJson.cardOwner,
+          cvv: prepayElemtJson.cvv,
+          expireDate: prepayElemtJson.expireDate
+      })
+    }).then((response) => response.json())
+      .then((json) => {
+          console.log("\n------------------------------\n")
+          console.log(json)
+          confirmStatus = json
+      })
+      .catch((error) => {
+          console.error(error);
+      })
+      .finally(() => {
+      })
+    
+    if (confirmStatus?.Error){
+      alert("Thanh toán không thành công, vui lòng gửi lại")
+    }
+    else{
+      Alert.alert("Xác nhận", "Giao dịch thành công", [{
+        title: 'OK',
+        onPress: () => props.navigation.navigate("Home", {status: 'rented'})
+      }])
+    }
+  }
+
   return (
     <View style= {styles.container}>
         {/* <HeaderCompo style= {styles.header}/> */}
@@ -18,9 +62,9 @@ const PrepayScreen = (props) => {
             <Text style ={ {marginTop : -10, textAlign : 'center' ,color : '#636262'}}> Thông tin thanh toán</Text>
           </View>
             {
-              Object.keys(elemtJson).map((key,vlue) => {
+              Object.keys(prepayElemtJson).map((key,vlue) => {
                 return (
-                  <Element key = {key} name = {key} detail = {elemtJson[key]}></Element>
+                  <Element key = {key} name = {key} detail = {prepayElemtJson[key]}></Element>
                 )
                 })
             }
@@ -28,16 +72,11 @@ const PrepayScreen = (props) => {
         <View style = {styles.buttonWap}>
             <TouchableHighlight
                style={styles.submit}
-                onPress={() => props.navigation.navigate('Home', {
-                  status: 'rented'
-                })}
+                onPress={processTransaction}
                 underlayColor='#ffff'>
                 <Text style={[styles.submitText]}>Thanh toán</Text>
             </TouchableHighlight>
-        </View>
-       
-        
-       
+        </View>      
     </View>
     
   )

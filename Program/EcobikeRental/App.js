@@ -12,6 +12,7 @@ import PackingLotElement from './PackingLotElement';
 import ReturnPackingLotScreen from './ReturnPackingLotScreen';
 import ReturnBike from './ReturnBike';
 import InvoiceScreen from './InvoiceScreen';
+import PaymentInfo from './PaymentInfo';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ export default class App extends React.Component  {
                 <Stack.Screen name='ReturnDetail' component={ReturnDetail} />
                 <Stack.Screen name='ReturnPackingLotScreen' component={ReturnPackingLotScreen} />
                 <Stack.Screen name='InvoiceScreen' component={InvoiceScreen} />
+                <Stack.Screen name='PaymentInfo' component={PaymentInfo} />
             </Stack.Navigator>
         </NavigationContainer>
     )
