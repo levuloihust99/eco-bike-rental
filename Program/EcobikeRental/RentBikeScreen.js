@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, TextInput } from 'react-native';
 import { baseURL } from './config';
 import SubHeader from './SubHeader';
+import {connect} from 'react-redux'
 
 
-export default function RentBikeScreen({ navigation }) {
+function RentBikeScreen(props) {
     const [text, setText] = React.useState('');
     const [respStatus, setRespStatus] = React.useState('initial');
 
@@ -43,7 +44,7 @@ export default function RentBikeScreen({ navigation }) {
             alert("Có lỗi");
         }
         else if (respStatus !== 'initial') {
-            navigation.navigate('RentDetail', {respStatus: respStatus})
+            props.navigation.navigate('RentDetail', {respStatus: respStatus})
         }
     }, [respStatus])
 
@@ -86,3 +87,5 @@ const styles = {
         fontSize: 20
     },
 }
+
+export default connect()(RentBikeScreen)
