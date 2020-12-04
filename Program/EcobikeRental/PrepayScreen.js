@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View , Image, Button, TouchableHighlight, Alert} from 'react-native';
+import { Text, View , Image, Button, TouchableHighlight, Alert, AsyncStorage} from 'react-native';
 import { MaterialIcons,Ionicons,EvilIcons,FontAwesome } from '@expo/vector-icons'
 import SubHeader from './SubHeader';
 import { baseURL } from './config';

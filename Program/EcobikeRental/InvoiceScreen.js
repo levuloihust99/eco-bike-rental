@@ -5,7 +5,7 @@ import SubHeader from "./SubHeader";
 
 const InvoiceScreen = (props) => {
     
-    invoiceElemtJson = {
+    const defaultInvoiceElemtJson = {
         'Loại xe' : 'Yamaha icat v4',
         'Mã vạch' : '135 234 2324' ,
         'Thời điểm thuê' : '1 giờ 30 phút',
@@ -15,6 +15,9 @@ const InvoiceScreen = (props) => {
         'Số tiền đã cọc' : '300.000 VND',
         'Số tiền đã nhận lại' : '150.000VND'
     }
+
+  const invoiceElemtJson = props.route.params?.data ? props.route.params.data : defaultInvoiceElemtJson
+
   return (
     <View style= {styles.container}>
         {/* <HeaderCompo style= {styles.header}/> */}

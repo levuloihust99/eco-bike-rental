@@ -3,15 +3,15 @@ import { Text, View, Image, Button, TouchableHighlight } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SubHeader from './SubHeader';
+import { baseURL } from './config'
 
 const RentingDetailScreen = (props) => {
 	// unmount RentingDetailScreen when there is a bike being rented
 	// or Save the timer in Redux/parent component
-	const refContainer = useRef('head');
-	var rentingElemtJson = {
+	var defaultRentingElemtJson = {
 		'Loại xe': 'Yamaha Icat4',
 		'Số tiền tạm tính': '150.000VND',
-		'Lượng pin còn lại': '30%',
+		'Thời gian còn lại ước tính': '30%',
 		'Mã vạch': "123542X35sjs"
 	}
 
@@ -20,6 +20,57 @@ const RentingDetailScreen = (props) => {
 		minute: 0,
 		second: 0,
 	});
+
+	const [resp, setResp] = React.useState('initial')
+	const [flag, setFlag] = React.useState(true)
+	// const [amount, setAmount] = React.useState(undefined)
+	// const [timeRemain, setTimeRemain] = React.useState(undefined)
+	// const [type, setType] = React.useState(undefined)
+	// const [bikeID, setBikeID] = React.useState(undefined)
+	const [rentingElemtJson, setRentingElemtJson] = React.useState(defaultRentingElemtJson)
+
+	React.useEffect(() => {
+		if (flag) {
+			fetch(baseURL + "getRentTransaction",
+				{
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						userID: '1'
+					})
+				}
+			).then((response) => response.json())
+				.then((json) => {
+					setResp(json)
+				})
+				.catch((error) => {
+					console.error(error);
+				})
+				.finally(() => {
+				})
+		}
+	}, [flag])
+
+	React.useEffect(() => {
+		console.log(resp)
+		if (resp !== 'initial'){
+			let now = new Date
+			setTimer({
+				hour: now.getHours() - resp.StartTime.hour,
+				minute: now.getMinutes() - resp.StartTime.min,
+				second: now.getSeconds() - resp.StartTime.sec
+			})
+			setRentingElemtJson({
+				'Loại xe': resp['Loại xe'],
+				'Số tiền tạm tính': resp['Số tiền tạm tính'],
+				'Thời gian còn lại ước tính': resp['Tg còn lại ước tính'],
+				'Mã vạch': resp['Mã vạch']
+			})
+		}
+	}, [resp])
 
 	React.useEffect(() => {
 		const timeoutID = setTimeout(() => {
@@ -30,16 +81,16 @@ const RentingDetailScreen = (props) => {
 			if (nextSecond > 59) {
 				nextMinute += 1;
 				nextSecond = 0;
-				if (nextMinute > 59){
+				if (nextMinute > 59) {
 					nextHour += 1;
 					nextMinute = 0;
 				}
 			}
-			setTimer({hour: nextHour, minute: nextMinute, second: nextSecond});
+			setTimer({ hour: nextHour, minute: nextMinute, second: nextSecond });
 		}, 1000);
 
 		return () => clearTimeout(timeoutID);
-	});
+	}, [timer]);
 
 	return (
 		<View style={styles.container}>
@@ -61,16 +112,16 @@ const RentingDetailScreen = (props) => {
             </Text>
 				<Text style={{ textAlign: 'center', color: '#ffff', fontWeight: 'bold', fontSize: 35, marginTop: 4 }}>
 					{timer.hour < 10 ? '0' + timer.hour : timer.hour} : {timer.minute < 10 ? '0' + timer.minute : timer.minute} : {timer.second < 10 ? '0' + timer.second : timer.second}
-            </Text>
+				</Text>
 			</View>
 			<View style={styles.rowSeparate}>
 				<View style={{ width: '30%', alignItems: 'center' }}>
 					<MaterialIcons name="pause-circle-outline" size={75} color='#08BD5F' />
 					<Text>Tạm dừng</Text>
 				</View>
-				<View style={{ width: '30%', alignItems: 'center'}}>
-					<MaterialIcons name="keyboard-return" size={75} color="#08BD5F" 
-					onPress={() => props.navigation.navigate('ReturnPackingLotScreen')} />
+				<View style={{ width: '30%', alignItems: 'center' }}>
+					<MaterialIcons name="keyboard-return" size={75} color="#08BD5F"
+						onPress={() => props.navigation.navigate('ReturnPackingLotScreen')} />
 					<Text>Trả xe</Text>
 				</View>
 			</View>

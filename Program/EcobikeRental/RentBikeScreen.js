@@ -8,14 +8,11 @@ export default function RentBikeScreen({ navigation }) {
     const [text, setText] = React.useState('');
     const [respStatus, setRespStatus] = React.useState('initial');
 
-    // function setSynchronous(newState) {
-    //     return new Promise(resolve => {
-    //         setState(newState, () => resolve())
-    //     });
-    // }
-
     const validateInput = () => {
         console.log("Before sending request: " + text);
+        if (!text) {
+            return
+        }
         fetch(baseURL + "getBikeByID",
             {
                 method: 'POST',
@@ -24,7 +21,7 @@ export default function RentBikeScreen({ navigation }) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    id: text
+                    bikeID: text
                 })
             }
         ).then((response) => response.json())

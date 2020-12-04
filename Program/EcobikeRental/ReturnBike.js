@@ -1,8 +1,53 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, TextInput } from 'react-native';
 import SubHeader from './SubHeader';
+import {baseURL} from './config';
 
 export default function ReturnBike({navigation}) {
+    const [text, setText] = React.useState('');
+    const [respStatus, setRespStatus] = React.useState('initial');
+
+    const validateInput = () => {
+        // console.log("Before sending request: " + text);
+        if (!text){
+            return
+        }
+        fetch(baseURL + "returnDetail",
+            {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    bikeID: text,
+                    userID: '1',
+                    parkingLotID: '1'
+                })
+            }
+        ).then((response) => response.json())
+            .then((json) => {
+                // console.log(json)
+                setRespStatus(json)
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+                // console.log(respStatus)
+            })
+    }
+
+    React.useEffect(() => {
+        console.log(respStatus)
+        if (respStatus?.Error){
+            alert("Có lỗi");
+        }
+        else if (respStatus !== 'initial') {
+            navigation.navigate('ReturnDetail', {status: respStatus})
+        }
+    }, [respStatus])
+
     return (
         <View style={{ flex: 1 }}>
             <SubHeader title="Trả xe" />
@@ -11,10 +56,11 @@ export default function ReturnBike({navigation}) {
                 <TextInput style={{
                     height: 40, borderBottomWidth: 0.5,
                     borderColor: '#BDBDBD', marginTop: 20, fontSize: 18
-                }} />
+                }} 
+                onChangeText={text => setText(text)}/>
                 <TouchableHighlight
                     style={styles.submit}
-                    onPress={() => navigation.navigate('ReturnDetail')}
+                    onPress={validateInput}
                     underlayColor='#FA2626'>
                     <Text style={styles.submitText}>TRẢ XE</Text>
                 </TouchableHighlight>

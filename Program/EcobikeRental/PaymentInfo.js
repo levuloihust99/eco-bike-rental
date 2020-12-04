@@ -11,50 +11,18 @@ var paymentElemtJson = {
     "Ngày hết hạn": "1125"
 }
 
-var status = {
-    cardID: '',
-    cardOwner: '',
-    cvv: '',
-    expireDate: ''
-}
-
-var resp = {};
-
 export default PaymentInfo = (props) => {
-    const sendInfo = () => {
-        console.log(baseURL)
-        fetch(baseURL + "verifyCardInfo",
-            {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userID: '1',
-                    bikeID: '1',
-                    cardID: status.cardID,
-                    userName: status.cardOwner,
-                    cvv: status.cvv,
-                    expireDate: status.expireDate
-                })
-            }
-        ).then((response) => response.json())
-            .then((json) => {
-                console.log("\n------------------------------\n")
-                console.log(json)
-                resp = json
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-            })
-        
-        if (resp.status === "false"){
+    const [cardID, setCardID] = React.useState(undefined)
+    const [cardOwner, setCardOwner] = React.useState(undefined)
+    const [cvv, setCvv] = React.useState(undefined)
+    const [expireDate, setExpireDate] = React.useState(undefined)
+    const [resp, setResp] = React.useState(undefined)
+
+    React.useEffect(() => {
+        if (resp?.status === "false"){
             alert("INVALID !!!")
         }
-        else {
+        else if (resp?.status) {
             fetch(baseURL + "prepayInfo",
             {
                 method: 'POST',
@@ -65,10 +33,10 @@ export default PaymentInfo = (props) => {
                 body: JSON.stringify({
                     userID: '1',
                     bikeID: '1',
-                    cardID: status.cardID,
-                    userName: status.cardOwner,
-                    cvv: status.cvv,
-                    expireDate: status.expireDate
+                    cardID: cardID,
+                    cardOwner: cardOwner,
+                    cvv: cvv,
+                    expireDate: expireDate
                 })
             }
         ).then((response) => response.json())
@@ -84,6 +52,54 @@ export default PaymentInfo = (props) => {
             })
 
         }
+    }, [resp])
+
+    const sendInfo = () => {
+        console.log(baseURL)
+        fetch(baseURL + "verifyCardInfo",
+            {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    bikeID: '1',
+                    cardID: cardID,
+                    cardOwner: cardOwner,
+                    cvv: cvv,
+                    expireDate: expireDate
+                })
+            }
+        ).then((response) => response.json())
+            .then((json) => {
+                console.log("\n------------------------------\n")
+                console.log(json)
+                setResp(json)
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+            .finally(() => {
+            })
+    }
+
+    const changeStatus = (name, text) => {
+        if (name === "Mã thẻ") {
+            setCardID(text)
+        }
+        else if (name === "Chủ thẻ") {
+            setCardOwner(text)
+            // status.cardOwner = text
+        }
+        else if (name === "CVV") {
+            setCvv(text)
+            // status.cvv = text
+        }
+        else if (name === "Ngày hết hạn") {
+            setExpireDate(text)
+            // status.expireDate = text
+        }
     }
 
     return (
@@ -96,7 +112,7 @@ export default PaymentInfo = (props) => {
                 {
                     Object.keys(paymentElemtJson).map((key, vlue) => {
                         return (
-                            <Element key={key} name={key}></Element>
+                            <Element key={key} name={key} action={changeStatus}></Element>
                         )
                     })
                 }
@@ -121,24 +137,8 @@ const Element = (props) => {
                     <Text style={[styles.detailText, { fontSize: 13 }]}>{props.name} :</Text>
                 </View>
                 <TextInput style={[styles.detailText, { flex: 1, fontWeight: '500', fontSize: 15 }]} defaultValue=""
-                    onChangeText={text => { //console.log(text); console.log(props)
-                        if (props.name === "Mã thẻ") {
-                            status.cardID = text
-                            // console.log(status.cardID)
-                        }
-                        else if (props.name === "Chủ thẻ") {
-                            // setCardOwner(text)
-                            status.cardOwner = text
-                        }
-                        else if (props.name === "CVV") {
-                            // setCvv(text)
-                            status.cvv = text
-                        }
-                        else if (props.name === "Ngày hết hạn") {
-                            // setExpireDate(text)
-                            status.expireDate = text
-                        }
-                    }} />
+                    onChangeText={text => props.action(props.name, text)}
+                    />
             </View>
             <View style={styles.sepaLine}></View>
         </View>
