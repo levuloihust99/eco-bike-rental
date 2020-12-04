@@ -4,10 +4,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SubHeader from './SubHeader';
 import { baseURL } from './config'
+import { useStore } from 'react-redux'
 
 const RentingDetailScreen = (props) => {
-	// unmount RentingDetailScreen when there is a bike being rented
-	// or Save the timer in Redux/parent component
 	var defaultRentingElemtJson = {
 		'Loại xe': 'Yamaha Icat4',
 		'Số tiền tạm tính': '150.000VND',
@@ -21,12 +20,9 @@ const RentingDetailScreen = (props) => {
 		second: 0,
 	});
 
+	const store = useStore()
 	const [resp, setResp] = React.useState('initial')
 	const [flag, setFlag] = React.useState(true)
-	// const [amount, setAmount] = React.useState(undefined)
-	// const [timeRemain, setTimeRemain] = React.useState(undefined)
-	// const [type, setType] = React.useState(undefined)
-	// const [bikeID, setBikeID] = React.useState(undefined)
 	const [rentingElemtJson, setRentingElemtJson] = React.useState(defaultRentingElemtJson)
 
 	React.useEffect(() => {
@@ -39,7 +35,7 @@ const RentingDetailScreen = (props) => {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({
-						userID: '1'
+						cardID: store.getState().cardID
 					})
 				}
 			).then((response) => response.json())
@@ -57,11 +53,14 @@ const RentingDetailScreen = (props) => {
 	React.useEffect(() => {
 		console.log(resp)
 		if (resp !== 'initial'){
-			let now = new Date
+			let now = new Date()
+			let startTime = resp.TimeStamp
+			let rentTime = Math.round((now - startTime) / 1000)
+
 			setTimer({
-				hour: now.getHours() - resp.StartTime.hour,
-				minute: now.getMinutes() - resp.StartTime.min,
-				second: now.getSeconds() - resp.StartTime.sec
+				hour: Math.floor(rentTime / 3600),
+				minute: Math.floor((rentTime % 3600) / 60),
+				second: Math.floor((rentTime % 3600) % 60)
 			})
 			setRentingElemtJson({
 				'Loại xe': resp['Loại xe'],

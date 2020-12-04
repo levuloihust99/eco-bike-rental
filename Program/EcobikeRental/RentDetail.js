@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image, Button, TouchableHighlight } from 'react-native';
 import SubHeader from './SubHeader';
-import storeUpFrontPrice from './actions';
+import { storeUpFrontPrice } from './actions';
 import {connect, useStore} from 'react-redux';
 
 var rentDetailElemtJson = {
@@ -136,7 +136,7 @@ const styles = {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        storeUpFrontPrice: (price) => dispatch(storeUpFrontPrice(price))
+        storeUpFrontPrice: (price) => {console.log("Hello"); dispatch(storeUpFrontPrice(price))}
     }
 }
 export default connect(null, mapDispatchToProps)(RentDetail) 

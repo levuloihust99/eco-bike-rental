@@ -4,9 +4,11 @@ import { MaterialIcons, Ionicons, EvilIcons, FontAwesome } from '@expo/vector-ic
 import HeaderCompo from './Header';
 import SubHeader from './SubHeader';
 import {baseURL} from './config'
+import { useStore } from 'react-redux'
 
 const ReturnDetail = (props) => {
 
+  const store = useStore()
   const defaultReturnDetailElemtJson = {
     'Loại xe': 'Yamaha icat v4',
     'Mã vạch': '135 234 2324',
@@ -19,7 +21,7 @@ const ReturnDetail = (props) => {
   const returnDetailElemtJson = props.route.params?.status ? props.route.params.status : defaultReturnDetailElemtJson
 
   const validateInfo = () => {
-    fetch(baseURL + "payTransaction",
+    fetch(baseURL + "finalPay",
       {
         method: 'POST',
         headers: {
@@ -27,9 +29,9 @@ const ReturnDetail = (props) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          bikeID: '8',
-          userID: '1',
-          parkingLotID: '1'
+          bikeID: store.getState().bikeID,
+          cardID: store.getState().cardID,
+          parkingLotID: store.getState().parkingLotID
         })
       }
     ).then((response) => response.json())
@@ -44,7 +46,7 @@ const ReturnDetail = (props) => {
         // console.log(respStatus)
       })
   }
-
+ 
   React.useEffect(() => {
     if (resp !== 'initial'){
       props.navigation.navigate('InvoiceScreen', {data: resp})

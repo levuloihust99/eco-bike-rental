@@ -14,13 +14,10 @@ import ReturnBike from './ReturnBike';
 import InvoiceScreen from './InvoiceScreen';
 import PaymentInfo from './PaymentInfo';
 import store from './store';
-import storeUpFrontPrice from './actions'
+import { storeUpFrontPrice } from './actions'
 import { Provider, connect } from 'react-redux'
 
 const Stack = createStackNavigator();
-
-// Create store
-// const store = Redux.createStore(rootReducer, initialState)
 
 class App extends React.Component {
     render() {
@@ -49,7 +46,7 @@ class App extends React.Component {
     }
 }
 
-const RootComponent = connect(null, mapDispatchToProps)(App);
+const RootComponent = connect()(App);
 
 export default class AppWrapper extends React.Component {
     render() {
@@ -58,11 +55,5 @@ export default class AppWrapper extends React.Component {
                 <RootComponent />
             </Provider>
         )
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        storeUpFrontPrice: (price) => dispatch(storeUpFrontPrice(price))
     }
 }

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, TextInpu
 import { baseURL } from './config';
 import SubHeader from './SubHeader';
 import {connect} from 'react-redux'
+import { storeBikeID } from './actions';
 
 
 function RentBikeScreen(props) {
@@ -41,9 +42,10 @@ function RentBikeScreen(props) {
     React.useEffect(() => {
         console.log(respStatus)
         if (respStatus?.error){
-            alert("Có lỗi");
+            alert(respStatus.error);
         }
         else if (respStatus !== 'initial') {
+            props.storeBikeID(text)
             props.navigation.navigate('RentDetail', {respStatus: respStatus})
         }
     }, [respStatus])
@@ -60,7 +62,6 @@ function RentBikeScreen(props) {
                     onChangeText={text => setText(text)}
                 // value={text}
                 />
-                <Text>{text}</Text>
                 <TouchableHighlight
                     style={styles.submit}
                     onPress={validateInput}
@@ -88,4 +89,10 @@ const styles = {
     },
 }
 
-export default connect()(RentBikeScreen)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeBikeID: (value) => dispatch(storeBikeID(value))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(RentBikeScreen)

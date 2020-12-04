@@ -6,6 +6,8 @@ import PackingLotElement from './PackingLotElement';
 import { MaterialIcons, Ionicons, EvilIcons, FontAwesome } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import { baseURL } from './config'
+import { storeParkingLotID } from './actions'
+import { connect } from 'react-redux'
 
 const defaultProp = [{
   id: 1,
@@ -33,10 +35,10 @@ const defaultProp = [{
 }
 ]
 
-export default class ReturnPackingLotScreen extends React.Component {
+class ReturnPackingLotScreen extends React.Component {
 
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       data: defaultProp
     }
@@ -79,7 +81,7 @@ export default class ReturnPackingLotScreen extends React.Component {
           <ScrollView>
             {this.state.data.map((y) => {
               return (
-                <ItemElement key={y['id']} name={y['name']} address={y['address']}> </ItemElement>
+                <ItemElement key={y['id']} name={y['name']} address={y['address']} parkingLotID={y['id']} parentProps={this.props}> </ItemElement>
               )
             })}
           </ScrollView>
@@ -108,7 +110,9 @@ const ItemElement = (props) => {
       </View>
       <TouchableHighlight
         style={styles.submit}
-        onPress={() => navigation.navigate('ReturnBike')}
+        onPress={() => {
+          props.parentProps.storeParkingLotID(props.parkingLotID)
+          navigation.navigate('ReturnBike')}}
         underlayColor='#FA2626'>
         <Text style={[styles.submitText]}>Chọn</Text>
       </TouchableHighlight>
@@ -210,3 +214,11 @@ const styles = StyleSheet.create({
   }
 
 });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    storeParkingLotID: (value) => dispatch(storeParkingLotID(value))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(ReturnPackingLotScreen)

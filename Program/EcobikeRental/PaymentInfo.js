@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, Image, Button, TouchableHighlight, TextInput } from 'react-native';
-import { MaterialIcons, Ionicons, EvilIcons, FontAwesome } from '@expo/vector-icons'
 import SubHeader from './SubHeader';
-import {baseURL} from './config.js'
+import { connect } from 'react-redux'
+import { storeCVV, storeExpireDate } from './actions'
 
 var paymentElemtJson = {
     "Mã thẻ": "118131_group6_2020",
@@ -11,94 +11,31 @@ var paymentElemtJson = {
     "Ngày hết hạn": "1125"
 }
 
-export default PaymentInfo = (props) => {
-    const [cardID, setCardID] = React.useState(undefined)
-    const [cardOwner, setCardOwner] = React.useState(undefined)
-    const [cvv, setCvv] = React.useState(undefined)
-    const [expireDate, setExpireDate] = React.useState(undefined)
-    const [resp, setResp] = React.useState(undefined)
+const PaymentInfo = (props) => {
+    const [cardCode, setCardCode] = React.useState("118131_group6_2020")
+    const [cardOwner, setCardOwner] = React.useState("Group 6")
+    const [cvv, setCvv] = React.useState("266")
+    const [expireDate, setExpireDate] = React.useState("1125")
 
-    React.useEffect(() => {
-        if (resp?.status === "false"){
-            alert("INVALID !!!")
-        }
-        else if (resp?.status) {
-            fetch(baseURL + "prepayInfo",
-            {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userID: '1',
-                    bikeID: '1',
-                    cardID: cardID,
-                    cardOwner: cardOwner,
-                    cvv: cvv,
-                    expireDate: expireDate
-                })
-            }
-        ).then((response) => response.json())
-            .then((json) => {
-                console.log("\n------------------------------\n")
-                console.log(json)
-                props.navigation.navigate("PrepayScreen", {data: json})
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-            })
-
-        }
-    }, [resp])
-
-    const sendInfo = () => {
-        console.log(baseURL)
-        fetch(baseURL + "verifyCardInfo",
-            {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    bikeID: '1',
-                    cardID: cardID,
-                    cardOwner: cardOwner,
-                    cvv: cvv,
-                    expireDate: expireDate
-                })
-            }
-        ).then((response) => response.json())
-            .then((json) => {
-                console.log("\n------------------------------\n")
-                console.log(json)
-                setResp(json)
-            })
-            .catch((error) => {
-                console.error(error);
-            })
-            .finally(() => {
-            })
+    const mapper = {
+        "Mã thẻ": cardCode,
+        "Chủ thẻ": cardOwner,
+        "CVV": cvv,
+        "Ngày hết hạn": expireDate
     }
 
     const changeStatus = (name, text) => {
         if (name === "Mã thẻ") {
-            setCardID(text)
+            setCardCode(text)
         }
         else if (name === "Chủ thẻ") {
             setCardOwner(text)
-            // status.cardOwner = text
         }
         else if (name === "CVV") {
             setCvv(text)
-            // status.cvv = text
         }
         else if (name === "Ngày hết hạn") {
             setExpireDate(text)
-            // status.expireDate = text
         }
     }
 
@@ -112,7 +49,7 @@ export default PaymentInfo = (props) => {
                 {
                     Object.keys(paymentElemtJson).map((key, vlue) => {
                         return (
-                            <Element key={key} name={key} action={changeStatus}></Element>
+                            <Element key={key} name={key} action={changeStatus} mapper={mapper}></Element>
                         )
                     })
                 }
@@ -120,7 +57,17 @@ export default PaymentInfo = (props) => {
             <View style={styles.buttonWap}>
                 <TouchableHighlight
                     style={styles.submit}
-                    onPress={sendInfo}
+                    onPress={() => {
+                        props.storeCVV(cvv)
+                        props.storeExpireDate(expireDate)
+                        props.navigation.navigate('PrepayScreen', {
+                            data: {
+                                cardCode: cardCode,
+                                cardOwner: cardOwner,
+                            }
+                        })
+                    }
+                    }
                     underlayColor='#ffff'>
                     <Text style={[styles.submitText]}>Thanh toán</Text>
                 </TouchableHighlight>
@@ -136,9 +83,9 @@ const Element = (props) => {
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <Text style={[styles.detailText, { fontSize: 13 }]}>{props.name} :</Text>
                 </View>
-                <TextInput style={[styles.detailText, { flex: 1, fontWeight: '500', fontSize: 15 }]} defaultValue=""
+                <TextInput style={[styles.detailText, { flex: 1, fontWeight: '500', fontSize: 15 }]} defaultValue={props.mapper[props.name]}
                     onChangeText={text => props.action(props.name, text)}
-                    />
+                />
             </View>
             <View style={styles.sepaLine}></View>
         </View>
@@ -222,3 +169,12 @@ const styles = {
         textAlign: 'center',
     },
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        storeCVV: (value) => dispatch(storeCVV(value)),
+        storeExpireDate: (value) => dispatch(storeExpireDate(value))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(PaymentInfo)

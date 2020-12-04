@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, TextInput } from 'react-native';
 import SubHeader from './SubHeader';
 import {baseURL} from './config';
+import { useStore } from 'react-redux'
 
 export default function ReturnBike({navigation}) {
+    const store = useStore()
     const [text, setText] = React.useState('');
     const [respStatus, setRespStatus] = React.useState('initial');
 
@@ -21,8 +23,8 @@ export default function ReturnBike({navigation}) {
                 },
                 body: JSON.stringify({
                     bikeID: text,
-                    userID: '1',
-                    parkingLotID: '1'
+                    cardID: store.getState().cardID,
+                    // parkingLotID: store.getState().parkingLotID
                 })
             }
         ).then((response) => response.json())
@@ -41,7 +43,7 @@ export default function ReturnBike({navigation}) {
     React.useEffect(() => {
         console.log(respStatus)
         if (respStatus?.Error){
-            alert("Có lỗi");
+            alert(respStatus.Error);
         }
         else if (respStatus !== 'initial') {
             navigation.navigate('ReturnDetail', {status: respStatus})
