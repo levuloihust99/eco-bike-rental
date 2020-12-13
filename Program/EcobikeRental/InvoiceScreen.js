@@ -47,9 +47,6 @@ const InvoiceScreen = (props) => {
                 <Text style={[styles.submitText]}>Quay về trang chủ</Text>
             </TouchableHighlight>
         </View>
-       
-        
-       
     </View>
     
   )

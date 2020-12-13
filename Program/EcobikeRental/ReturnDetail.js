@@ -48,7 +48,10 @@ const ReturnDetail = (props) => {
   }
  
   React.useEffect(() => {
-    if (resp !== 'initial'){
+    if (resp?.Error){
+      alert(resp.Error)
+    }
+    else if (resp !== 'initial'){
       props.navigation.navigate('InvoiceScreen', {data: resp})
     }
   }, [resp])

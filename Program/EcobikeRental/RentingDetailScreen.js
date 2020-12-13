@@ -62,12 +62,16 @@ const RentingDetailScreen = (props) => {
 				minute: Math.floor((rentTime % 3600) / 60),
 				second: Math.floor((rentTime % 3600) % 60)
 			})
-			setRentingElemtJson({
-				'Loại xe': resp['Loại xe'],
-				'Số tiền tạm tính': resp['Số tiền tạm tính'],
-				'Thời gian còn lại ước tính': resp['Tg còn lại ước tính'],
-				'Mã vạch': resp['Mã vạch']
-			})
+
+			console.log(resp)
+			setRentingElemtJson(
+				Object.keys(resp)
+					.filter(key => key !== 'TimeStamp')
+					.reduce((result, current) => {
+						result[current] = resp[current];
+						return result;
+					}, {})
+			)
 		}
 	}, [resp])
 
