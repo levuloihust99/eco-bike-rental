@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="157.0000000000001" y="1476.0">vn.hust.kstn.tkxdpm.controller.RentBikeController</node>
+    <node x="1077.2250000000001" y="0.0">vn.hust.kstn.tkxdpm.entity.ParkinglotEntity</node>
+    <node x="1032.534698275862" y="1380.0">vn.hust.kstn.tkxdpm.factory.Processor</node>
+    <node x="389.68469827586205" y="915.0">vn.hust.kstn.tkxdpm.utils.HttpConnector</node>
+    <node x="1460.6098624794747" y="1136.0">vn.hust.kstn.tkxdpm.repository.CardRepository</node>
+    <node x="1110.4123357963877" y="276.0">vn.hust.kstn.tkxdpm.entity.BikeEntity</node>
+    <node x="1037.284698275862" y="915.0">vn.hust.kstn.tkxdpm.repository.RentTransactionRepository</node>
+    <node x="582.284698275862" y="584.0">vn.hust.kstn.tkxdpm.interbankSubsystem.InterBankTransaction</node>
+    <node x="1035.034698275862" y="1476.0">vn.hust.kstn.tkxdpm.controller.ParkingLotController</node>
+    <node x="423.2390291461412" y="1476.0">vn.hust.kstn.tkxdpm.controller.PaymentController</node>
+    <node x="354.4238711001642" y="1136.0">vn.hust.kstn.tkxdpm.utils.BikeTypeUtils</node>
+    <node x="1698.2555316091955" y="673.0">vn.hust.kstn.tkxdpm.repository.ReturnTransactionRepository</node>
+    <node x="0.0" y="1476.0">vn.hust.kstn.tkxdpm.controller.BikeController</node>
+    <node x="1267.284698275862" y="915.0">vn.hust.kstn.tkxdpm.utils.FeeCalculator</node>
+    <node x="1276.1833333333334" y="595.0">vn.hust.kstn.tkxdpm.entity.RenttransactionEntity</node>
+    <node x="205.4238711001642" y="1058.0">vn.hust.kstn.tkxdpm.model.request.RequestModel</node>
+    <node x="681.284698275862" y="387.0">vn.hust.kstn.tkxdpm.repository.ParkingLotRepository</node>
+    <node x="879.284698275862" y="673.0">vn.hust.kstn.tkxdpm.repository.BikeRepository</node>
+    <node x="504.4238711001642" y="1136.0">vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem</node>
+    <node x="539.684698275862" y="915.0">vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankBoundary</node>
+    <node x="1476.9750000000001" y="331.0">vn.hust.kstn.tkxdpm.entity.ReturntransactionEntity</node>
+    <node x="1429.3180316091955" y="848.0">vn.hust.kstn.tkxdpm.entity.CardEntity</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankBoundary" target="vn.hust.kstn.tkxdpm.interbankSubsystem.InterBankTransaction">
+      <point x="0.0" y="-13.0" />
+      <point x="618.184698275862" y="828.0" />
+      <point x="604.409698275862" y="828.0" />
+      <point x="-66.375" y="102.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.RentBikeController" target="vn.hust.kstn.tkxdpm.model.request.RequestModel">
+      <point x="-40.75" y="-13.0" />
+      <point x="197.7500000000001" y="1360.0" />
+      <point x="253.7988711001642" y="1360.0" />
+      <point x="-16.125" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.entity.BikeEntity">
+      <point x="-2.599999999999909" y="-13.0" />
+      <point x="1081.934698275862" y="1260.0" />
+      <point x="1026.784698275862" y="1260.0" />
+      <point x="1026.784698275862" y="564.0" />
+      <point x="1194.6623357963877" y="564.0" />
+      <point x="-84.25" y="124.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.ParkinglotEntity" target="vn.hust.kstn.tkxdpm.entity.BikeEntity">
+      <point x="105.83333333333326" y="113.0" />
+      <point x="1310.0583333333334" y="246.0" />
+      <point x="1405.2873357963877" y="246.0" />
+      <point x="126.375" y="-124.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.entity.ParkinglotEntity">
+      <point x="-13.0" y="-13.0" />
+      <point x="1071.534698275862" y="1280.0" />
+      <point x="868.784698275862" y="1280.0" />
+      <point x="868.784698275862" y="256.0" />
+      <point x="1140.7250000000001" y="256.0" />
+      <point x="-63.5" y="113.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem" target="vn.hust.kstn.tkxdpm.utils.HttpConnector">
+      <point x="-54.33333333333337" y="-13.0" />
+      <point x="531.5905377668308" y="1033.0" />
+      <point x="454.68469827586205" y="1033.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.utils.BikeTypeUtils">
+      <point x="-44.200000000000045" y="-13.0" />
+      <point x="1040.334698275862" y="1340.0" />
+      <point x="419.4238711001642" y="1340.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.ReturntransactionEntity" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="-46.57142857142844" y="69.0" />
+      <point x="1593.4035714285717" y="564.0" />
+      <point x="1558.9333333333334" y="564.0" />
+      <point x="108.75" y="-91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.repository.ReturnTransactionRepository" target="vn.hust.kstn.tkxdpm.entity.ReturntransactionEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="1810.2555316091955" y="564.0" />
+      <point x="1686.5464285714288" y="564.0" />
+      <point x="46.57142857142867" y="69.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.entity.ReturntransactionEntity">
+      <point x="49.40000000000009" y="-13.0" />
+      <point x="1133.934698275862" y="1360.0" />
+      <point x="1937.9555316091955" y="1360.0" />
+      <point x="1937.9555316091955" y="544.0" />
+      <point x="1779.689285714286" y="544.0" />
+      <point x="139.71428571428578" y="69.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.repository.ReturnTransactionRepository">
+      <point x="39.0" y="-13.0" />
+      <point x="1123.534698275862" y="1340.0" />
+      <point x="1810.2555316091955" y="1340.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.BikeEntity" target="vn.hust.kstn.tkxdpm.entity.ParkinglotEntity">
+      <point x="-42.125" y="-124.0" />
+      <point x="1236.7873357963877" y="256.0" />
+      <point x="1225.3916666666669" y="256.0" />
+      <point x="21.166666666666742" y="113.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.repository.BikeRepository">
+      <point x="-7.7999999999999545" y="-13.0" />
+      <point x="1076.734698275862" y="1270.0" />
+      <point x="947.784698275862" y="1270.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.entity.CardEntity">
+      <point x="28.59999999999991" y="-13.0" />
+      <point x="1113.1346982758619" y="1320.0" />
+      <point x="1619.6098624794747" y="1320.0" />
+      <point x="1619.6098624794747" y="1033.0" />
+      <point x="1599.8180316091955" y="1033.0" />
+      <point x="0.0" y="80.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.ParkingLotController" target="vn.hust.kstn.tkxdpm.factory.Processor">
+      <point x="0.0" y="-13.0" />
+      <point x="39.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.utils.FeeCalculator">
+      <point x="7.7999999999999545" y="-13.0" />
+      <point x="1092.334698275862" y="1280.0" />
+      <point x="1332.284698275862" y="1280.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem" target="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankBoundary">
+      <point x="0.0" y="-13.0" />
+      <point x="585.9238711001642" y="1033.0" />
+      <point x="618.184698275862" y="1033.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem" target="vn.hust.kstn.tkxdpm.interbankSubsystem.InterBankTransaction">
+      <point x="54.333333333333314" y="-13.0" />
+      <point x="640.2572044334975" y="1033.0" />
+      <point x="707.184698275862" y="1033.0" />
+      <point x="707.184698275862" y="828.0" />
+      <point x="648.659698275862" y="828.0" />
+      <point x="-22.125" y="102.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.utils.FeeCalculator" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="1332.284698275862" y="828.0" />
+      <point x="1341.4333333333334" y="828.0" />
+      <point x="-108.75" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.repository.RentTransactionRepository">
+      <point x="2.599999999999909" y="-13.0" />
+      <point x="1087.1346982758619" y="1270.0" />
+      <point x="1142.284698275862" y="1270.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity" target="vn.hust.kstn.tkxdpm.entity.BikeEntity">
+      <point x="-152.25" y="-91.0" />
+      <point x="1297.9333333333334" y="564.0" />
+      <point x="1250.8290024630544" y="564.0" />
+      <point x="-28.083333333333258" y="124.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity" target="vn.hust.kstn.tkxdpm.entity.ReturntransactionEntity">
+      <point x="65.25" y="-91.0" />
+      <point x="1515.4333333333334" y="564.0" />
+      <point x="1546.832142857143" y="564.0" />
+      <point x="-93.14285714285711" y="69.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.PaymentController" target="vn.hust.kstn.tkxdpm.factory.Processor">
+      <point x="39.25" y="-13.0" />
+      <point x="540.9890291461412" y="1456.0" />
+      <point x="1097.534698275862" y="1456.0" />
+      <point x="13.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.repository.CardRepository">
+      <point x="23.40000000000009" y="-13.0" />
+      <point x="1107.934698275862" y="1310.0" />
+      <point x="1529.1098624794747" y="1310.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.BikeController" target="vn.hust.kstn.tkxdpm.model.request.RequestModel">
+      <point x="-34.25" y="-13.0" />
+      <point x="34.25" y="1350.0" />
+      <point x="221.5488711001642" y="1350.0" />
+      <point x="-48.375" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.repository.ParkingLotRepository">
+      <point x="-18.200000000000045" y="-13.0" />
+      <point x="1066.334698275862" y="1290.0" />
+      <point x="769.784698275862" y="1290.0" />
+      <point x="0.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity" target="vn.hust.kstn.tkxdpm.entity.CardEntity">
+      <point x="108.75" y="91.0" />
+      <point x="1558.9333333333334" y="818.0" />
+      <point x="1642.4430316091955" y="818.0" />
+      <point x="42.625" y="-80.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.repository.RentTransactionRepository" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="1142.284698275862" y="828.0" />
+      <point x="1297.9333333333334" y="828.0" />
+      <point x="-152.25" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.repository.BikeRepository" target="vn.hust.kstn.tkxdpm.entity.BikeEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="947.784698275862" y="554.0" />
+      <point x="1138.495669129721" y="554.0" />
+      <point x="-140.41666666666674" y="124.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.PaymentController" target="vn.hust.kstn.tkxdpm.model.request.RequestModel">
+      <point x="-39.25" y="-13.0" />
+      <point x="462.4890291461412" y="1426.0" />
+      <point x="326.26082717569807" y="1426.0" />
+      <point x="326.26082717569807" y="1360.0" />
+      <point x="286.0488711001642" y="1360.0" />
+      <point x="16.125" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.RentBikeController" target="vn.hust.kstn.tkxdpm.factory.Processor">
+      <point x="40.75" y="-13.0" />
+      <point x="279.2500000000001" y="1446.0" />
+      <point x="1071.534698275862" y="1446.0" />
+      <point x="-13.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem">
+      <point x="-39.0" y="-13.0" />
+      <point x="1045.534698275862" y="1330.0" />
+      <point x="545.1738711001642" y="1330.0" />
+      <point x="-40.75" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.BikeEntity" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="140.41666666666652" y="124.0" />
+      <point x="1419.3290024630542" y="564.0" />
+      <point x="1428.4333333333334" y="564.0" />
+      <point x="-21.75" y="-91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.controller.BikeController" target="vn.hust.kstn.tkxdpm.factory.Processor">
+      <point x="34.25" y="-13.0" />
+      <point x="102.75" y="1436.0" />
+      <point x="1045.534698275862" y="1436.0" />
+      <point x="-39.0" y="13.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.repository.ParkingLotRepository" target="vn.hust.kstn.tkxdpm.entity.ParkinglotEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="769.784698275862" y="246.0" />
+      <point x="1098.3916666666669" y="246.0" />
+      <point x="-105.83333333333326" y="113.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.interbankSubsystem.InterBankTransaction">
+      <point x="-28.59999999999991" y="-13.0" />
+      <point x="1055.934698275862" y="1310.0" />
+      <point x="718.184698275862" y="1310.0" />
+      <point x="718.184698275862" y="818.0" />
+      <point x="692.909698275862" y="818.0" />
+      <point x="22.125" y="102.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.repository.CardRepository" target="vn.hust.kstn.tkxdpm.entity.CardEntity">
+      <point x="0.0" y="-13.0" />
+      <point x="1529.1098624794747" y="1033.0" />
+      <point x="1486.1513649425287" y="1033.0" />
+      <point x="-113.66666666666663" y="80.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="13.0" y="-13.0" />
+      <point x="1097.534698275862" y="1290.0" />
+      <point x="1407.784698275862" y="1290.0" />
+      <point x="1407.784698275862" y="828.0" />
+      <point x="1384.9333333333334" y="828.0" />
+      <point x="-65.25" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.entity.CardEntity" target="vn.hust.kstn.tkxdpm.entity.RenttransactionEntity">
+      <point x="-127.875" y="-80.0" />
+      <point x="21.75" y="91.0" />
+    </edge>
+    <edge source="vn.hust.kstn.tkxdpm.factory.Processor" target="vn.hust.kstn.tkxdpm.model.request.RequestModel">
+      <point x="-49.40000000000009" y="-13.0" />
+      <point x="1035.1346982758619" y="1350.0" />
+      <point x="318.2988711001642" y="1350.0" />
+      <point x="48.375" y="91.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.20000000000000015" x="773.833333333333" y="675.9999999999998" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
