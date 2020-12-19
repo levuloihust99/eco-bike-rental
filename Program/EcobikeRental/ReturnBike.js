@@ -22,7 +22,7 @@ export default function ReturnBike({navigation}) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    bikeID: text,
+                    barcode: text,
                     cardID: store.getState().cardID,
                     // parkingLotID: store.getState().parkingLotID
                 })

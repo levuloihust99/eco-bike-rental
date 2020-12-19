@@ -15,7 +15,7 @@ function RentBikeScreen(props) {
         if (!text) {
             return
         }
-        fetch(baseURL + "getBikeByID",
+        fetch(baseURL + "getBikeByBarcode",
             {
                 method: 'POST',
                 headers: {
@@ -23,7 +23,7 @@ function RentBikeScreen(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    bikeID: text
+                    barcode: text
                 })
             }
         ).then((response) => response.json())
