@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vn.hust.kstn.tkxdpm.entity.*;
-import vn.hust.kstn.tkxdpm.interbankSubsystem.InterBankTransaction;
-import vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankInterface;
-import vn.hust.kstn.tkxdpm.interbankSubsystem.InterbankSubsystem;
+import vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem.InterBankTransaction;
+import vn.hust.kstn.tkxdpm.bankSystem.InterbankInterface;
+import vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem.InterbankSystemController;
 import vn.hust.kstn.tkxdpm.model.request.RequestModel;
 import vn.hust.kstn.tkxdpm.repository.*;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
@@ -63,7 +63,7 @@ public class PaymentController {
     /**
      * The Interbank subsystem.
      */
-    public InterbankInterface interbankSubsystem = new InterbankSubsystem();
+    public InterbankInterface interbankSubsystem = new InterbankSystemController();
     private SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     /**
