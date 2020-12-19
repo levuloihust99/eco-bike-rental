@@ -12,6 +12,7 @@ import java.security.MessageDigest;
 
 /**
  * InterBankSubsystem impliments các phương thức của InterbankInterface.
+ * Điều khiển các phương thức thanh toán với Interbank
  */
 @Slf4j
 public class InterbankSystemController implements InterbankInterface {

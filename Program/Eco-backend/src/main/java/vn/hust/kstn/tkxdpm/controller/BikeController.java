@@ -1,7 +1,6 @@
 package vn.hust.kstn.tkxdpm.controller;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vn.hust.kstn.tkxdpm.entity.BikeEntity;
-import vn.hust.kstn.tkxdpm.model.request.RequestModel;
+import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.repository.BikeRepository;
 import vn.hust.kstn.tkxdpm.utils.BarcodeUtils;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
@@ -46,12 +45,12 @@ public class BikeController {
      * @param model tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string tương ứng với thông tin xe cần truy vấn
      */
-    @PostMapping(value = "/getBikeByID", consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/getBikeByBarcode", consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
     public String getBikeControl(@RequestBody RequestModel model){
-        log.info("New request path /getBikeByID");
+        log.info("New request path /getBikeByBarcode");
         try {
-            String barcode = model.getBikeID() ;
-            model.setBikeID(BarcodeUtils.getBikeIDbyBarCode(barcode));
+            String barcode = model.getBarcode() ;
+            model.setBarcode(BarcodeUtils.getBikeIDbyBarCode(barcode));
             String output =  getBikeByBarCode(model);
             log.info(output);
             return output ;
@@ -71,9 +70,9 @@ public class BikeController {
         JsonObject bike = new JsonObject();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
 
-        log.info(""+ model.getBikeID());
+        log.info(""+ model.getBarcode());
         try {
-            long id = Long.parseLong(model.getBikeID()) ;
+            long id = Long.parseLong(model.getBarcode()) ;
             BikeEntity bikeEntity = bikeRepository.getOne(id);
             if (bikeEntity != null && bikeEntity.getIsAvailable() == 1) {
                 bike.addProperty("Mã vạch", bikeEntity.getBikeId());
@@ -93,7 +92,7 @@ public class BikeController {
                 return bike.toString();
             }
         } catch (Exception e){
-            bike.addProperty("id", model.getBikeID());
+            bike.addProperty("id", model.getBarcode());
             bike.addProperty("error", "Không tìm thấy xe phù hợp với mã vạch !!");
         }
         return bike.toString() ;

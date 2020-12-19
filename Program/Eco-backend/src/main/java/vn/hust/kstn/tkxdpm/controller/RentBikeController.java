@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vn.hust.kstn.tkxdpm.entity.BikeEntity;
 import vn.hust.kstn.tkxdpm.entity.RenttransactionEntity;
-import vn.hust.kstn.tkxdpm.model.request.RequestModel;
+import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.repository.RentTransactionRepository;
 import vn.hust.kstn.tkxdpm.utils.BarcodeUtils;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
@@ -65,7 +65,7 @@ public class RentBikeController {
     public String getRentTransactionControl(@RequestBody RequestModel model){
         log.info("New request path /getRentTransaction");
         try {
-            String output = getRentingBike(model);
+            String output = getRentTransaction(model);
             return output;
         } catch (Exception e){
             log.error(e.getMessage(),e);
@@ -82,9 +82,9 @@ public class RentBikeController {
     public String getReturnDetail(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject();
         String cardID = requestModel.getCardID() ;
-        String barcode = requestModel.getBikeID() ;
-        requestModel.setBikeID(BarcodeUtils.getBikeIDbyBarCode(barcode));
-        String bikeID = requestModel.getBikeID();
+        String barcode = requestModel.getBarcode() ;
+        requestModel.setBarcode(BarcodeUtils.getBikeIDbyBarCode(barcode));
+        String bikeID = requestModel.getBarcode();
         try {
             List<RenttransactionEntity> renttransactionEntity = rentTransactionRepository.findAllByCardId(Long.parseLong(cardID));
             // If transaction exist
@@ -123,7 +123,7 @@ public class RentBikeController {
      * @param idModel tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string là thông tin của xe đang được thuê tương ứng
      */
-    public String getRentingBike(RequestModel idModel){
+    public String getRentTransaction(RequestModel idModel){
         JsonObject jsonObject = new JsonObject() ;
         String id = idModel.getCardID() ;
         log.info("ID :{}", id);

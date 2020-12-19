@@ -17,6 +17,8 @@ public class BikeTypeUtils {
             return  "Xe đạp đôi";
         if (type == 3)
             return "Xe đạp điện";
+        if (type == 4)
+            return "Xe đạp điện đôi" ;
         else return
         "Loại xe chưa định nghĩa" ;
     }

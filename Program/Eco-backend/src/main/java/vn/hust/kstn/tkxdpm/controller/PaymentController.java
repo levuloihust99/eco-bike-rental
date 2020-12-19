@@ -12,7 +12,7 @@ import vn.hust.kstn.tkxdpm.entity.*;
 import vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem.InterBankTransaction;
 import vn.hust.kstn.tkxdpm.bankSystem.InterbankInterface;
 import vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem.InterbankSystemController;
-import vn.hust.kstn.tkxdpm.model.request.RequestModel;
+import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.repository.*;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
 import vn.hust.kstn.tkxdpm.utils.FeeCalculator;
@@ -24,8 +24,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Lớp điều khiển các tác vụ liên quan đến Thanh toán hóa đơn gửi xe.
- * Tạo, định nghĩa restAPI tương ứng để FrontEnd có thể tương tác đến
+ * Lớp điều khiển các tác vụ liên quan đến Thanh toán hóa đơn thuê/trả xe.
+ * Định nghĩa restAPI tương ứng để FrontEnd có thể tương tác đến
  */
 @Slf4j
 @RestController
@@ -75,7 +75,7 @@ public class PaymentController {
      * @return kết quả trả về là chuỗi json dạng string là kết quả thực hiện giao dịch
      */
     @PostMapping(value = "/payUpfront", consumes = MediaType.APPLICATION_JSON_VALUE , produces = MediaType.APPLICATION_JSON_VALUE)
-    public String confirmPay(@RequestBody RequestModel requestModel) {
+    public String payUpFrontControl(@RequestBody RequestModel requestModel) {
         log.info("New request path /payUpfront");
         try {
             log.info(requestModel.toString());
@@ -98,10 +98,10 @@ public class PaymentController {
      * @return kết quả trả về là chuỗi json dạng string là kết quả thực hiện giao dịch
      */
     @PostMapping(value = "/finalPay", consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
-    public String payTransaction(@RequestBody RequestModel model){
+    public String finalPayControl(@RequestBody RequestModel model){
         log.info("New request path /finalPay");
         try {
-            String output = finalPayTransaction(model);
+            String output = finalPay(model);
             return output;
         } catch (Exception e){
             log.error(e.getMessage(),e);
@@ -118,7 +118,7 @@ public class PaymentController {
     public String payUpfront(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject() ;
         try {
-            String bikeID = requestModel.getBikeID();
+            String bikeID = requestModel.getBarcode();
             log.info(new ObjectMapper().writeValueAsString(requestModel));
             BikeEntity bike = bikeRepository.getOne(Long.parseLong(bikeID));
             int upFront = bike.getUpfrontPrice() ;
@@ -129,7 +129,7 @@ public class PaymentController {
             interBankTransaction.setCreatedAt(df.format(new Date()));
             interBankTransaction.setCvvCode(requestModel.getCvv());
             interBankTransaction.setDateExpired(requestModel.getExpireDate());
-            interBankTransaction.setOwner(requestModel.getUserName());
+            interBankTransaction.setOwner(requestModel.getCardOwner());
             interBankTransaction.setTransactionContent("Dat coc thue xe ecobike");
             interBankTransaction.setCommand("pay");
             String response = interbankSubsystem.processPayTransaction(interBankTransaction);
@@ -139,7 +139,7 @@ public class PaymentController {
                 cardEntity.setCardCode(requestModel.getCardCode());
                 cardEntity.setCvvCode(requestModel.getCvv());
                 cardEntity.setDateExpired(requestModel.getExpireDate());
-                cardEntity.setOwner(requestModel.getUserName());
+                cardEntity.setOwner(requestModel.getCardOwner());
                 cardRepository.saveAndFlush(cardEntity);
                 // Lưu rentTransaction :::
                 RenttransactionEntity renttransactionEntity = new RenttransactionEntity();
@@ -156,7 +156,7 @@ public class PaymentController {
                 bikeRepository.saveAndFlush(bike);
                 // Construct result
                 jsonObject.addProperty("cardID", cardEntity.getCardId());
-                jsonObject.addProperty("bikeID", requestModel.getBikeID());
+                jsonObject.addProperty("bikeID", requestModel.getBarcode());
                 jsonObject.addProperty("status", "Success");
             } else {
                 String status = interbankSubsystem.codeToDetail(response);
@@ -176,11 +176,11 @@ public class PaymentController {
      * @param requestModel thông tin trả xe
      * @return Kết quả thanh toán
      */
-    public String finalPayTransaction(RequestModel requestModel)  {
+    public String finalPay(RequestModel requestModel)  {
         JsonObject jsonObject = new JsonObject();
         String customerID = requestModel.getCardID() ;
 //        log.info(new ObjectMapper().writeValueAsString(requestModel));
-        String bikeID = requestModel.getBikeID() ;
+        String bikeID = requestModel.getBarcode() ;
         String parkinglotID = requestModel.getParkingLotID() ;
         try {
             List<RenttransactionEntity> renttransactionEntity = rentTransactionRepository.findAllByCardId(Long.parseLong(customerID));

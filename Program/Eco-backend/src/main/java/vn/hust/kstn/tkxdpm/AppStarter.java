@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 /**
- * Class chính, chứa hàm main khởi tạo trương trình .
+ * Class chính, chứa hàm main khởi tạo chương trình .
  */
 @SpringBootApplication
 @RequiredArgsConstructor

@@ -24,8 +24,6 @@ public class HttpConnector {
             .readTimeout(10000,TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(true)
             .build() ;
-    private static CloseableHttpClient httpClient;
-
     /**
      * Send patch method HTTP.
      *
@@ -66,23 +64,6 @@ public class HttpConnector {
             return response.body().string();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-        }
-        return null;
-    }
-
-    /**
-     * Send get method.
-     *
-     * @param url the url
-     * @return the response
-     */
-    public  String sendGet(String url){
-        try{
-            Request request = new Request.Builder().url(url).build();
-            Response response = client.newCall(request).execute();
-            return  response.body().string();
-        } catch (Exception e){
-            log.error(e.getMessage(),e);
         }
         return null;
     }
