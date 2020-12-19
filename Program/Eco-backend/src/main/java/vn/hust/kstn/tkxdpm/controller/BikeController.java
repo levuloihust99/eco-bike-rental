@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import vn.hust.kstn.tkxdpm.entity.BikeEntity;
-import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.repository.BikeRepository;
+import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.utils.BarcodeUtils;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
 import vn.hust.kstn.tkxdpm.utils.HttpConnector;
@@ -27,15 +27,15 @@ public class BikeController {
      * The Bike repository.
      */
     @Autowired
-    BikeRepository bikeRepository ;
+    private BikeRepository bikeRepository ;
     /**
      * The Barcode api.
      */
-    String barcodeAPI = "https://barcodeservicebykv2.herokuapp.com/barcode" ;
+    private String barcodeAPI = "https://barcodeservicebykv2.herokuapp.com/barcode" ;
     /**
      * The Http connector.
      */
-    HttpConnector httpConnector = new HttpConnector();
+    private HttpConnector httpConnector = new HttpConnector();
 
     /**
      * Method tạo API để front-end truy vấn thông tin xe

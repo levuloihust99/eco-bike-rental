@@ -3,7 +3,6 @@ package vn.hust.kstn.tkxdpm.utils;
 import vn.hust.kstn.tkxdpm.entity.RenttransactionEntity;
 
 import javax.management.timer.Timer;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 

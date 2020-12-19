@@ -5,7 +5,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="NewPersistenceUnit" value="e0feecef-aedb-4b48-844c-566d9924bed0" />
+          <factory-entry name="NewPersistenceUnit" value="a138c954-261e-4a76-9956-a14aae831fc0" />
           <factory-entry name="entityManagerFactory" />
         </datasource-mapping>
         <naming-strategy-map />
