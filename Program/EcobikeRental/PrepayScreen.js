@@ -30,9 +30,9 @@ const PrepayScreen = (props) => {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				bikeID: store.getState().bikeID,
+				barcode: store.getState().bikeID,
 				cardCode: cardCode,
-				userName: cardOwner,
+				cardOwner: cardOwner,
 				cvv: store.getState().cvv,
 				expireDate: store.getState().expireDate
 			})
@@ -51,7 +51,11 @@ const PrepayScreen = (props) => {
 
 	React.useEffect(() => {
 		if (confirmStatus?.Error) {
-			alert(confirmStatus.Error)
+			// alert(confirmStatus.Error)
+			Alert.alert("Lỗi", confirmStatus.Error, [{
+				title: 'OK',
+				onPress: () => props.navigation.navigate("PaymentInfo")
+			}])
 		}
 		else if (confirmStatus !== 'initial') {
 			props.storeCardID(confirmStatus.cardID)
