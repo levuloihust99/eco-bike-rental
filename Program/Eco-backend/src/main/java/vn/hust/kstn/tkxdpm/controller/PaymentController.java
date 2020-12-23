@@ -115,7 +115,7 @@ public class PaymentController {
      * @param requestModel thông tin thanh toán
      * @return kết quả thanh toán dưới dạng String Json
      */
-    public String payUpfront(RequestModel requestModel){
+    private String payUpfront(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject() ;
         try {
             String bikeID = requestModel.getBarcode();
@@ -176,7 +176,7 @@ public class PaymentController {
      * @param requestModel thông tin trả xe
      * @return Kết quả thanh toán
      */
-    public String finalPay(RequestModel requestModel)  {
+    private String finalPay(RequestModel requestModel)  {
         JsonObject jsonObject = new JsonObject();
         String customerID = requestModel.getCardID() ;
 //        log.info(new ObjectMapper().writeValueAsString(requestModel));

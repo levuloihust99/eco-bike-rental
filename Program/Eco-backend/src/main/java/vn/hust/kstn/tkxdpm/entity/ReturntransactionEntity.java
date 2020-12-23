@@ -9,7 +9,7 @@ import java.util.Objects;
  * Lớp đinh nghĩa một giao dịch trả xe với các trường thông tin tương ứng
  */
 @Entity
-@Table(name = "returntransaction", schema = "eco_bike_2")
+@Table(name = "returntransaction", schema = "ecobike")
 public class ReturntransactionEntity {
     private long rentTransactionId;
     private Timestamp rentTime;

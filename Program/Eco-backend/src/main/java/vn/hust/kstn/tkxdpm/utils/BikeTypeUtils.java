@@ -1,7 +1,7 @@
 package vn.hust.kstn.tkxdpm.utils;
 
 /**
- * Lớp đảm nhận nhiệm vụ chuyển loại xe từ code dạng int tương ứng
+ * Lớp đảm nhận nhiệm vụ chuyển loại xe từ code dạng text tương ứng
  */
 public class BikeTypeUtils {
     /**

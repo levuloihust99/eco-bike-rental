@@ -10,7 +10,7 @@ import java.util.Objects;
  * Lớp đinh nghĩa một đối tượng bike với các trường thông tin tương ứng
  */
 @Entity
-@Table(name = "bike", schema = "eco_bike_2")
+@Table(name = "bike", schema = "ecobike")
 public class BikeEntity {
     private long bikeId;
     private long parkingLotId;

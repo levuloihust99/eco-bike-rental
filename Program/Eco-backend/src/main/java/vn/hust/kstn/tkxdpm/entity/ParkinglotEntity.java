@@ -8,7 +8,7 @@ import java.util.Objects;
  * Lớp đinh nghĩa một đối tượng ParkingLot với các trường thông tin tương ứng
  */
 @Entity
-@Table(name = "parkinglot", schema = "eco_bike_2")
+@Table(name = "parkinglot", schema = "ecobike")
 public class ParkinglotEntity {
     private long parkingLotId;
     private String name;

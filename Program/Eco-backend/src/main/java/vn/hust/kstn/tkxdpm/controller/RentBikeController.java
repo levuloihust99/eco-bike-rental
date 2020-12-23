@@ -79,7 +79,7 @@ public class RentBikeController {
      * @param requestModel tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string là tt xe trả tương ứng với thông tin truyền vào
      */
-    public String getReturnDetail(RequestModel requestModel){
+    private String getReturnDetail(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject();
         String cardID = requestModel.getCardID() ;
         String barcode = requestModel.getBarcode() ;
@@ -123,7 +123,7 @@ public class RentBikeController {
      * @param idModel tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string là thông tin của xe đang được thuê tương ứng
      */
-    public String getRentTransaction(RequestModel idModel){
+    private String getRentTransaction(RequestModel idModel){
         JsonObject jsonObject = new JsonObject() ;
         String id = idModel.getCardID() ;
         log.info("ID :{}", id);

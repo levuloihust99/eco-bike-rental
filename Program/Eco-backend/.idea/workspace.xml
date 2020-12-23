@@ -1,151 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f754468-4e13-4700-8e10-b482ae3cd78b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/be.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/AppStarter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/bankSystem/InterbankInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/bankSystem/InterbankSubsystem/InterBankTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/bankSystem/InterbankSubsystem/InterbankBoundary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/bankSystem/InterbankSubsystem/InterbankSystemController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/controller/BikeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/controller/ParkingLotController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/controller/PaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/controller/RentBikeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/entity/BikeEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/entity/CardEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/entity/ParkinglotEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/entity/RenttransactionEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/entity/ReturntransactionEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/repository/BikeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/repository/CardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/repository/ParkingLotRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/repository/RentTransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/repository/ReturnTransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/requestInterface/RequestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/utils/BarcodeUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/utils/BikeTypeUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/utils/FeeCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vn/hust/kstn/tkxdpm/utils/HttpConnector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/vn/hust/kstn/tkxdpm/ValidateBarcodeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/vn/hust/kstn/tkxdpm/ValidateBikeTypeUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/vn/hust/kstn/tkxdpm/ValidateFeeCalculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/vn/hust/kstn/tkxdpm/ValidateInterbankPayTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/vn/hust/kstn/tkxdpm/ValidateInterbankReturnTransaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/be-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/accessors-smart-1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/android-json-0.0.20131108.vaadin1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/annotations-13.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/antlr-2.7.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/asm-5.0.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/aspectjweaver-1.8.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/assertj-core-2.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/classmate-1.3.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/dom4j-1.6.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/gson-2.8.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hamcrest-core-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hamcrest-library-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hibernate-commons-annotations-5.0.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hibernate-core-5.0.12.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hibernate-entitymanager-5.0.12.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hibernate-jpa-2.1-api-1.0.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/hibernate-validator-5.3.5.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jackson-annotations-2.8.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jackson-core-2.8.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jackson-databind-2.8.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jandex-2.0.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/javassist-3.21.0-GA.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/javax.transaction-api-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jboss-logging-3.3.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jcl-over-slf4j-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/json-20190722.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/json-path-2.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/json-smart-2.2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jsonassert-1.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/jul-to-slf4j-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/junit-4.12.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/kotlin-stdlib-1.3.50.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/kotlin-stdlib-common-1.3.50.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/log4j-over-slf4j-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/logback-access-1.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/logback-classic-1.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/logback-core-1.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/lombok-1.18.10.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/mockito-core-1.10.19.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/mysql-connector-java-5.1.44.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/objenesis-2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/okhttp-4.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/okio-2.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/slf4j-api-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/snakeyaml-1.17.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-aop-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-aspects-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-beans-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-autoconfigure-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-aop-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-data-jpa-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-jdbc-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-logging-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-test-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-tomcat-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-web-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-starter-web-services-2.0.5.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-test-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-boot-test-autoconfigure-1.5.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-context-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-core-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-data-commons-1.13.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-data-jpa-1.11.8.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-expression-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-jdbc-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-orm-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-oxm-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-test-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-tx-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-web-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-webmvc-4.3.12.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-ws-core-2.4.0.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/spring-xml-2.4.0.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-annotations-api-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-embed-core-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-embed-el-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-embed-websocket-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-jdbc-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/tomcat-juli-8.5.23.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/lib/validation-api-1.1.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/AppStarter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/entity/BikeEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/entity/CardEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/entity/ParkinglotEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/entity/RenttransactionEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/entity/ReturntransactionEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/repository/BikeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/repository/ParkingLotRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/repository/RentTransactionRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vn/hust/kstn/tkxdpm/utils/HttpConnector.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="0f754468-4e13-4700-8e10-b482ae3cd78b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -177,11 +36,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="package-info" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -190,21 +50,23 @@
       </set>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1kUImd0dQTQ2djUscDmUZg0qVgv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="JPA.DatabaseSchemaImportDialog" value="a138c954-261e-4a76-9956-a14aae831fc0" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -213,7 +75,7 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
@@ -231,22 +93,40 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn clean test" />
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Spring Boot.AppStarter">
+  <component name="RunManager" selected="JUnit.ValidateBarcodeService.test">
+    <configuration name="AppStarter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vn.hust.kstn.tkxdpm.AppStarter" />
+      <module name="Eco-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.hust.kstn.tkxdpm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ValidateBarcodeService.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Eco-backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vn.hust.kstn.tkxdpm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="vn.hust.kstn.tkxdpm" />
+      <option name="MAIN_CLASS_NAME" value="vn.hust.kstn.tkxdpm.ValidateBarcodeService" />
+      <option name="METHOD_NAME" value="test(java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ValidateBikeController.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="be" />
       <extension name="coverage">
@@ -258,22 +138,6 @@
       <option name="PACKAGE_NAME" value="vn.hust.kstn.tkxdpm.controller" />
       <option name="MAIN_CLASS_NAME" value="vn.hust.kstn.tkxdpm.controller.ValidateBikeController" />
       <option name="METHOD_NAME" value="test(java.lang.String)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ValidateFeeCalculator.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="be" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="vn.hust.kstn.tkxdpm.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="vn.hust.kstn.tkxdpm.controller" />
-      <option name="MAIN_CLASS_NAME" value="vn.hust.kstn.tkxdpm.controller.ValidateFeeCalculator" />
-      <option name="METHOD_NAME" value="test(int,long)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -311,26 +175,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppStarter" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="be" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="vn.hust.kstn.tkxdpm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.hust.kstn.tkxdpm.AppStarter" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.AppStarter" />
+        <item itemvalue="JUnit.ValidateBarcodeService.test" />
+        <item itemvalue="Application.AppStarter" />
         <item itemvalue="JUnit.ValidateInterbankPayTransaction.testRefundTransaction" />
         <item itemvalue="JUnit.ValidateBikeController.test" />
         <item itemvalue="JUnit.ValidateInterbankPayTransaction.testPayTransaction" />
-        <item itemvalue="JUnit.ValidateFeeCalculator.test" />
       </list>
     </recent_temporary>
   </component>
@@ -354,6 +205,7 @@
       </serviceView>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -390,13 +242,12 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
