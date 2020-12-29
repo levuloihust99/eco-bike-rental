@@ -103,11 +103,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
 	\frametitle{Phân công công việc}
-	\begin{itemize}
-		\item Lợi: đặc tả usecase Xem chi tiết xe đang thuê, code frontend, thiết kế chi tiết lớp, làm slide. (35\%)
-		\item Khiêm: đặc tả usecase Trả xe, code backend, thiết kế giao diện người dùng. (40\%)
-		\item Kiên: đặc tả usecase Thuê xe, thiết kế dữ liệu.(25\%)
-	\end{itemize}
+%	\begin{itemize}
+%		\item Lợi: đặc tả usecase Xem chi tiết xe đang thuê, code frontend, thiết kế chi tiết lớp, làm slide. (35\%)
+%		\item Khiêm: đặc tả usecase Trả xe, code backend, thiết kế giao diện người dùng. (40\%)
+%		\item Kiên: đặc tả usecase Thuê xe, thiết kế dữ liệu.(25\%)
+%	\end{itemize}
+\renewcommand{\arraystretch}{1.5}
+\begin{scriptsize}
+	\begin{tabular}{|p{.1\linewidth}|p{.25\linewidth}|p{.25\linewidth}|p{.25\linewidth}|}
+		\hline
+		& Lê Vũ Lợi & Phạm Minh Khiêm & Phạm Trung Kiên \\\hline
+		SRS & UC001, UC002, UC006, Usecase diagram, Activity diagram & UC005, UC008, Non-functional requirements & UC003, UC004, UC007, Introduction\\\hline
+		SDD & View renting bike, class design, SDD hotfix & Return bike, user interface, Interbank subsystem design, SDD hotfix & Rent bike, database design, SDD hotfix \\\hline
+		Program & frontend & backend, barcode API & database, refactor code \\\hline
+		Testing & Test UnitTest & Viết UnitTest & \\\hline
+		Summary & 35\% & 35\% & 30\% \\\hline
+	\end{tabular}
+\end{scriptsize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[plain]
@@ -190,7 +202,8 @@
 	\begin{itemize}
 		\item \textbf{Liskov substitution principle}
 		\begin{itemize}
-			\item Nguyên tắc này yêu cầu một lớp con kế thừa từ một lớp cha sẽ có thể sử dụng để thay thếlớp cha trong bất kì tình huống nào.\\[5pt]
+			\item Nguyên tắc này yêu cầu một lớp con kế thừa từ một lớp cha sẽ có thể sử dụng để thay thế
+lớp cha trong bất kì tình huống nào.\\[5pt]
 			\item Để đảm bảo yêu cầu này thì đối với các phương thức ghi đè, tham số truyền vào cho lớp con phải có miền giá trị rộng hơn lớp cha, đồng thời giá trị trả về trong phương thức ở lớp con phải có miền giá trị nhỏ hơn.\\[5pt]
 			\item Trong thiết kế của hệ thống, lớp \textit{PaymentController} có một thuộc tính tên \textit{interbankSubsystem} với kiểu dữ liệu là \textit{InterbankInterface}. Trong mọi tình huống, kiểu dữ liệu của \textit{interbankSubsystem} có thể chuyển thành \textit{InterbankController}  hay bất kì lớp nào khác implement \textit{InterbankInterface}.
 		\end{itemize}
