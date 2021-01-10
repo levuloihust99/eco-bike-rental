@@ -2,13 +2,14 @@ package vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem;
 
 import lombok.Getter;
 import lombok.Setter;
+import vn.hust.kstn.tkxdpm.bankSystem.PaymentObject;
 
 /**
  *  Lớp của dối tượng Inter bank transaction, chứa thông tin cần thiết phục vụ việc thanh toán.
  */
 @Getter
 @Setter
-public class InterBankTransaction {
+public class InterBankTransaction extends PaymentObject {
         /**
          * The Amount of money.
          */

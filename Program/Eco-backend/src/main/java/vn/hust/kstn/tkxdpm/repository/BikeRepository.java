@@ -9,4 +9,5 @@ import vn.hust.kstn.tkxdpm.entity.BikeEntity;
  */
 @Repository
 public interface BikeRepository extends JpaRepository<BikeEntity, Long> {
+//    BikeEntity getAllByBikeId(Integer bikeID);
 }

@@ -13,7 +13,8 @@ import vn.hust.kstn.tkxdpm.repository.RentTransactionRepository;
 import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
 import vn.hust.kstn.tkxdpm.utils.BarcodeUtils;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
-import vn.hust.kstn.tkxdpm.utils.FeeCalculator;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.FeeCalculatorInterface;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.NomalBikeFeeCalculator;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -79,7 +80,9 @@ public class RentBikeController {
      * @param requestModel tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string là tt xe trả tương ứng với thông tin truyền vào
      */
-    private String getReturnDetail(RequestModel requestModel){
+    private FeeCalculatorInterface feeCalculator ;
+
+    public String getReturnDetail(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject();
         String cardID = requestModel.getCardID() ;
         String barcode = requestModel.getBarcode() ;
@@ -98,7 +101,8 @@ public class RentBikeController {
                 } else {
                     Timestamp returnTime = new Timestamp(System.currentTimeMillis());
                     Timestamp rentTime = new Timestamp(returnTime.getTime() - renttransaction.getStartTime().getTime());
-                    long count = new FeeCalculator().calculateFee(renttransaction);
+                    feeCalculator = new NomalBikeFeeCalculator();
+                    long count = feeCalculator.calculateFee(renttransaction);
 
                     // form output
                     jsonObject.addProperty("Mã vạch", renttransaction.getBikeId());
@@ -123,7 +127,7 @@ public class RentBikeController {
      * @param idModel tham số truyền vào, đóng gói trong đối tượng thuộc lớp RequestModel
      * @return kết quả trả về là chuỗi json dạng string là thông tin của xe đang được thuê tương ứng
      */
-    private String getRentTransaction(RequestModel idModel){
+    public String getRentTransaction(RequestModel idModel){
         JsonObject jsonObject = new JsonObject() ;
         String id = idModel.getCardID() ;
         log.info("ID :{}", id);
@@ -134,7 +138,7 @@ public class RentBikeController {
                 BikeEntity bikeEntity = renttransaction.getBikeByBikeId();
                 jsonObject.addProperty("Mã vạch", renttransaction.getBikeId());
                 jsonObject.addProperty("Loại xe", BikeTypeUtils.translateType(bikeEntity.getType()));
-                jsonObject.addProperty("Số tiền tạm tính", new FeeCalculator().calculateFee(renttransaction) + " VND");
+                jsonObject.addProperty("Số tiền tạm tính", new NomalBikeFeeCalculator().calculateFee(renttransaction) + " VND");
                 if (bikeEntity.getType() ==3) {
 //                    log.info(renttransaction.getBikeId());
                     jsonObject.addProperty("Thời gian còn lại ước tính", bikeEntity.getMaxTimeUsed().toString());

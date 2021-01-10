@@ -25,5 +25,5 @@ public interface InterbankInterface {
      * @param code mã lỗi
      * @return giải thích lỗi tương ứng dạng String
      */
-    public String codeToDetail(String code);
+    public int translateCode(String code);
 }

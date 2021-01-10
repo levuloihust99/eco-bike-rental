@@ -1,4 +1,9 @@
-package vn.hust.kstn.tkxdpm.entity;
+package vn.hust.kstn.tkxdpm.entity.bike;
+
+import vn.hust.kstn.tkxdpm.entity.ParkinglotEntity;
+import vn.hust.kstn.tkxdpm.entity.RenttransactionEntity;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.FeeCalculatorInterface;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.NomalBikeFeeCalculator;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -11,18 +16,26 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "bike", schema = "eco_bike_2")
-public class BikeEntity {
-    private long bikeId;
-    private long parkingLotId;
-    private int type;
-    private int upfrontPrice;
-    private int rentPrice;
-    private Timestamp lastUsed;
-    private Time maxTimeUsed;
-    private byte isAvailable;
-    private ParkinglotEntity parkinglotByParkingLotId;
-    private Collection<RenttransactionEntity> renttransactionsByBikeId;
+public class RootBikeEntity {
+    protected FeeCalculatorInterface feeCalculator ;
+    protected long bikeId;
+    protected long parkingLotId;
+//    private int type;
+    protected int upfrontPrice;
+    protected int rentPrice;
+    protected Timestamp lastUsed;
 
+    protected byte isAvailable;
+    protected ParkinglotEntity parkinglotByParkingLotId;
+    protected Collection<RenttransactionEntity> renttransactionsByBikeId;
+
+
+
+    @Transient
+    public FeeCalculatorInterface getFeeCalculatorMethod(){
+        feeCalculator = new NomalBikeFeeCalculator();
+        return  feeCalculator;
+    }
     /**
      * Gets bike id.
      *
@@ -62,27 +75,6 @@ public class BikeEntity {
     public void setParkingLotId(long parkingLotId) {
         this.parkingLotId = parkingLotId;
     }
-
-    /**
-     * Gets type.
-     *
-     * @return the type
-     */
-    @Basic
-    @Column(name = "type")
-    public int getType() {
-        return type;
-    }
-
-    /**
-     * Sets type.
-     *
-     * @param type the type
-     */
-    public void setType(int type) {
-        this.type = type;
-    }
-
     /**
      * Gets upfront price.
      *
@@ -148,20 +140,6 @@ public class BikeEntity {
      *
      * @return the max time used
      */
-    @Basic
-    @Column(name = "maxTimeUsed")
-    public Time getMaxTimeUsed() {
-        return maxTimeUsed;
-    }
-
-    /**
-     * Sets max time used.
-     *
-     * @param maxTimeUsed the max time used
-     */
-    public void setMaxTimeUsed(Time maxTimeUsed) {
-        this.maxTimeUsed = maxTimeUsed;
-    }
 
     /**
      * Gets is available.
@@ -187,20 +165,18 @@ public class BikeEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BikeEntity that = (BikeEntity) o;
+        RootBikeEntity that = (RootBikeEntity) o;
         return bikeId == that.bikeId &&
                 parkingLotId == that.parkingLotId &&
-                type == that.type &&
                 upfrontPrice == that.upfrontPrice &&
                 rentPrice == that.rentPrice &&
                 isAvailable == that.isAvailable &&
-                Objects.equals(lastUsed, that.lastUsed) &&
-                Objects.equals(maxTimeUsed, that.maxTimeUsed);
+                Objects.equals(lastUsed, that.lastUsed);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bikeId, parkingLotId, type, upfrontPrice, rentPrice, lastUsed, maxTimeUsed, isAvailable);
+        return Objects.hash(bikeId, parkingLotId, upfrontPrice, rentPrice, lastUsed, isAvailable);
     }
 
     /**

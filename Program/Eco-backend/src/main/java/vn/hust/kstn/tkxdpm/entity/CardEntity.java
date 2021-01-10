@@ -8,7 +8,7 @@ import java.util.Objects;
  * Lớp đinh nghĩa một đối tượng Card với các trường thông tin tương ứng
  */
 @Entity
-@Table(name = "card", schema = "ecobike")
+@Table(name = "card", schema = "eco_bike_2")
 public class CardEntity {
     private long cardId;
     private String cardCode;

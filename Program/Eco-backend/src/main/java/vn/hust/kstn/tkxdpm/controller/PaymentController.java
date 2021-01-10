@@ -14,8 +14,10 @@ import vn.hust.kstn.tkxdpm.bankSystem.InterbankSubsystem.InterbankSystemControll
 import vn.hust.kstn.tkxdpm.entity.*;
 import vn.hust.kstn.tkxdpm.repository.*;
 import vn.hust.kstn.tkxdpm.requestInterface.RequestModel;
+import vn.hust.kstn.tkxdpm.utils.BankCodeUtils;
 import vn.hust.kstn.tkxdpm.utils.BikeTypeUtils;
-import vn.hust.kstn.tkxdpm.utils.FeeCalculator;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.FeeCalculatorInterface;
+import vn.hust.kstn.tkxdpm.utils.FeeCalculate.NomalBikeFeeCalculator;
 
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -115,7 +117,7 @@ public class PaymentController {
      * @param requestModel thông tin thanh toán
      * @return kết quả thanh toán dưới dạng String Json
      */
-    private String payUpfront(RequestModel requestModel){
+    public String payUpfront(RequestModel requestModel){
         JsonObject jsonObject = new JsonObject() ;
         try {
             String bikeID = requestModel.getBarcode();
@@ -159,7 +161,8 @@ public class PaymentController {
                 jsonObject.addProperty("bikeID", requestModel.getBarcode());
                 jsonObject.addProperty("status", "Success");
             } else {
-                String status = interbankSubsystem.codeToDetail(response);
+                int code= interbankSubsystem.translateCode(response);
+                String status = BankCodeUtils.codeToDetail(code);
                 jsonObject.addProperty("Error", status);
             }
             return  jsonObject.toString();
@@ -176,7 +179,8 @@ public class PaymentController {
      * @param requestModel thông tin trả xe
      * @return Kết quả thanh toán
      */
-    private String finalPay(RequestModel requestModel)  {
+    public FeeCalculatorInterface feeCalculator ;
+    public String finalPay(RequestModel requestModel)  {
         JsonObject jsonObject = new JsonObject();
         String customerID = requestModel.getCardID() ;
 //        log.info(new ObjectMapper().writeValueAsString(requestModel));
@@ -191,7 +195,8 @@ public class PaymentController {
                 CardEntity cardEntity = renttransaction.getCardByCardId();
                 Timestamp returnTime = new Timestamp(System.currentTimeMillis());
                 Timestamp rentTime = new Timestamp(returnTime.getTime() - renttransaction.getStartTime().getTime());
-                long count = new FeeCalculator().calculateFee(renttransaction);
+                feeCalculator = new NomalBikeFeeCalculator();
+                long count = feeCalculator.calculateFee(renttransaction);
 
                 //payment
                 InterBankTransaction interBankTransaction = new InterBankTransaction();
@@ -209,7 +214,8 @@ public class PaymentController {
                     interBankTransaction.setAmount(String.valueOf(-bikeEntity.getUpfrontPrice() + count));
                     response = interbankSubsystem.processPayTransaction(interBankTransaction);
                 }
-                if (response.equals("00")) {
+                int code= interbankSubsystem.translateCode(response);
+                if (code == 0) {
                     // Update return Transaction
                     ReturntransactionEntity returntransaction = new ReturntransactionEntity();
                     returntransaction.setRentTransactionId(renttransaction.getRentTransactionId());
@@ -232,7 +238,7 @@ public class PaymentController {
                     jsonObject.addProperty("Số tiền đã cọc", bikeEntity.getUpfrontPrice());
                     jsonObject.addProperty("Số tiền nhận lại", bikeEntity.getUpfrontPrice() - count + " VND");
                 } else {
-                    String status = interbankSubsystem.codeToDetail(response);
+                    String status = BankCodeUtils.codeToDetail(code);
                     jsonObject.addProperty("Error", status );
                 }
             }

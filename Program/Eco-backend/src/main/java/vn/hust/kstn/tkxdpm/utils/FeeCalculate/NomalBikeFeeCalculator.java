@@ -1,4 +1,4 @@
-package vn.hust.kstn.tkxdpm.utils;
+package vn.hust.kstn.tkxdpm.utils.FeeCalculate;
 
 import vn.hust.kstn.tkxdpm.entity.RenttransactionEntity;
 
@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Lớp có nhiệm vụ tính toán phí thuê xe
  */
-public class FeeCalculator {
+public class NomalBikeFeeCalculator implements FeeCalculatorInterface {
     /**
      * Calculate fee.
      *
